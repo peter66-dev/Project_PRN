@@ -248,7 +248,7 @@ namespace WinformPetStore
             this.cboGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cboGender.Location = new System.Drawing.Point(157, 120);
+            this.cboGender.Location = new System.Drawing.Point(173, 121);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(202, 25);
             this.cboGender.TabIndex = 999;
@@ -345,7 +345,7 @@ namespace WinformPetStore
             // 
             this.txtPoint.Enabled = false;
             this.txtPoint.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPoint.Location = new System.Drawing.Point(157, 172);
+            this.txtPoint.Location = new System.Drawing.Point(173, 173);
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.ReadOnly = true;
             this.txtPoint.Size = new System.Drawing.Size(202, 25);
@@ -366,7 +366,7 @@ namespace WinformPetStore
             // 
             this.txtCusName.Enabled = false;
             this.txtCusName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCusName.Location = new System.Drawing.Point(157, 69);
+            this.txtCusName.Location = new System.Drawing.Point(173, 70);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.ReadOnly = true;
             this.txtCusName.Size = new System.Drawing.Size(202, 25);
@@ -387,7 +387,7 @@ namespace WinformPetStore
             // 
             this.txtCusID.Enabled = false;
             this.txtCusID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCusID.Location = new System.Drawing.Point(157, 19);
+            this.txtCusID.Location = new System.Drawing.Point(173, 20);
             this.txtCusID.Name = "txtCusID";
             this.txtCusID.ReadOnly = true;
             this.txtCusID.Size = new System.Drawing.Size(202, 25);

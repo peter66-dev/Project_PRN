@@ -94,13 +94,13 @@ namespace WinformPetStore
                 dgvCustomerList.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["AccumulatedPoint"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["Gender"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvCustomerList.Columns["Email"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvCustomerList.Columns["Email"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 dgvCustomerList.Columns["CustomerID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["CustomerName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvCustomerList.Columns["Email"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvCustomerList.Columns["Email"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["Address"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvCustomerList.Columns["Phone"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvCustomerList.Columns["Phone"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["Status"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["AccumulatedPoint"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvCustomerList.Columns["Gender"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;

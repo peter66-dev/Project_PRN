@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using WinformPetStore;
@@ -137,11 +131,11 @@ namespace GroupAssignment
             ActivateButton(sender, RGBColors.color2);
             OpenChildForm(new frmCustomerManagement());
         }
-        private void btnBills_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new frmBillManagement());
-        }
+        //private void btnBills_Click(object sender, EventArgs e)
+        //{
+        //    ActivateButton(sender, RGBColors.color3);
+        //    OpenChildForm(new frmBillManagement());
+        //}
         private void btnCreateBill_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color4);

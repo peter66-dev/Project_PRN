@@ -2090,19 +2090,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thien\\.nuget\\packages\\": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\thien\\source\\repos\\Project_PRN\\GroupAssignment\\WinformPetStore.csproj",
+      "projectUniqueName": "E:\\Project_PRN\\GroupAssignment\\WinformPetStore.csproj",
       "projectName": "WinformPetStore",
-      "projectPath": "C:\\Users\\thien\\source\\repos\\Project_PRN\\GroupAssignment\\WinformPetStore.csproj",
-      "packagesPath": "C:\\Users\\thien\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\thien\\source\\repos\\Project_PRN\\GroupAssignment\\obj\\",
+      "projectPath": "E:\\Project_PRN\\GroupAssignment\\WinformPetStore.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "E:\\Project_PRN\\GroupAssignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\thien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2116,11 +2116,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\thien\\source\\repos\\Project_PRN\\Business Object\\Business Object.csproj": {
-              "projectPath": "C:\\Users\\thien\\source\\repos\\Project_PRN\\Business Object\\Business Object.csproj"
+            "E:\\Project_PRN\\Business Object\\Business Object.csproj": {
+              "projectPath": "E:\\Project_PRN\\Business Object\\Business Object.csproj"
             },
-            "C:\\Users\\thien\\source\\repos\\Project_PRN\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "C:\\Users\\thien\\source\\repos\\Project_PRN\\DataAccess\\DataAccess.csproj"
+            "E:\\Project_PRN\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "E:\\Project_PRN\\DataAccess\\DataAccess.csproj"
             }
           }
         }
