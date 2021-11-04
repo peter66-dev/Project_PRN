@@ -120,6 +120,7 @@ namespace WinformPetStore
             // 
             // txtPoint
             // 
+            this.txtPoint.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPoint.Location = new System.Drawing.Point(162, 214);
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.Size = new System.Drawing.Size(120, 22);
@@ -128,6 +129,7 @@ namespace WinformPetStore
             // 
             // cboGender
             // 
+            this.cboGender.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cboGender.FormattingEnabled = true;
             this.cboGender.Items.AddRange(new object[] {
             "Male",
@@ -139,6 +141,7 @@ namespace WinformPetStore
             // 
             // txtAddress
             // 
+            this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddress.Location = new System.Drawing.Point(509, 156);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
@@ -147,6 +150,7 @@ namespace WinformPetStore
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.SandyBrown;
@@ -158,6 +162,7 @@ namespace WinformPetStore
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.SandyBrown;
@@ -169,6 +174,7 @@ namespace WinformPetStore
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.SandyBrown;
@@ -180,6 +186,7 @@ namespace WinformPetStore
             // 
             // txtPhone
             // 
+            this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPhone.Location = new System.Drawing.Point(509, 92);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(174, 22);
@@ -187,6 +194,7 @@ namespace WinformPetStore
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.SandyBrown;
@@ -198,6 +206,7 @@ namespace WinformPetStore
             // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtEmail.Location = new System.Drawing.Point(162, 152);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(174, 22);
@@ -235,6 +244,7 @@ namespace WinformPetStore
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.SandyBrown;
@@ -246,6 +256,7 @@ namespace WinformPetStore
             // 
             // txtCusName
             // 
+            this.txtCusName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCusName.Location = new System.Drawing.Point(162, 94);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(174, 22);
@@ -253,6 +264,7 @@ namespace WinformPetStore
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.SandyBrown;
@@ -264,6 +276,7 @@ namespace WinformPetStore
             // 
             // txtCusID
             // 
+            this.txtCusID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtCusID.Enabled = false;
             this.txtCusID.Location = new System.Drawing.Point(162, 38);
             this.txtCusID.Name = "txtCusID";
@@ -273,6 +286,7 @@ namespace WinformPetStore
             // 
             // lbCusID
             // 
+            this.lbCusID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbCusID.AutoSize = true;
             this.lbCusID.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCusID.ForeColor = System.Drawing.Color.SandyBrown;
@@ -284,6 +298,7 @@ namespace WinformPetStore
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(611, 17);
             this.label4.Name = "label4";

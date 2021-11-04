@@ -1,13 +1,8 @@
 ﻿using Business_Object;
 using DataAccess.Repository;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinformPetStore
@@ -17,6 +12,7 @@ namespace WinformPetStore
         public ICustomerRepository customerRepository { get; set; }
         public bool InsertOrUpdate;
         public CustomerObject CustomerInfo { get; set; }
+
         public frmCustomerDetails()
         {
             InitializeComponent();
@@ -43,7 +39,6 @@ namespace WinformPetStore
             }
             catch (Exception ex)
             {
-
             }
         }
         private bool CheckForm()

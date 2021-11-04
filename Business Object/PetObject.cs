@@ -31,7 +31,8 @@ namespace Business_Object
             QuantityInStock = quantityBuy;
         }
 
-        public PetObject(int id, string name, int age, bool gen, string color, int quantity, int cateid, decimal import, decimal export, bool status)
+        public PetObject(int id, string name, int age, bool gen, string color, int quantity, int cateid, 
+            decimal import, decimal export, bool status)
         {
             PetID = id;
             PetName = name;

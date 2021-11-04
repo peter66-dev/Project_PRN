@@ -47,7 +47,8 @@ namespace DataAccess
         {
             connection = new SqlConnection(GetConnectionString());
             List<PetObject> list = new List<PetObject>();
-            command = new SqlCommand("select PetID, PetName, Age, Gender, Color, QuantityInStock, CategoryID, ImportPrice, ExportPrice, Status from tblPets", connection);
+            command = new SqlCommand("select PetID, PetName, Age, Gender, Color, QuantityInStock, " +
+                "CategoryID, ImportPrice, ExportPrice, Status from tblPets where status = 1", connection);
             try
             {
                 connection.Open();
@@ -64,8 +65,8 @@ namespace DataAccess
                         pet.QuantityInStock = rs.GetInt32("QuantityInStock");
                         pet.Color = rs.GetString("Color");
                         pet.CategoryID = rs.GetInt32("CategoryID");
-                        pet.ImportPrice = Math.Round(rs.GetDecimal("ImportPrice"),2);
-                        pet.ExportPrice = Math.Round(rs.GetDecimal("ExportPrice"), 2);
+                        pet.ImportPrice = Math.Round(rs.GetDecimal("ImportPrice"));
+                        pet.ExportPrice = Math.Round(rs.GetDecimal("ExportPrice"));
                         pet.Status = rs.GetBoolean("Status");
                         list.Add(pet);
                     }

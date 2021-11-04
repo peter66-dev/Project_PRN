@@ -10,14 +10,26 @@ namespace WinformPetStore
     public partial class frmPetss : Form
     {
         IPetRepository petRepository = new PetRepository();
-        bool InsertOrUpdate;
-        BindingSource source;
+        BindingSource source = new BindingSource();
+        IEnumerable<PetObject> pets = new List<PetObject>();
+        PetObject currentPet = new PetObject();
 
         public frmPetss()
         {
             InitializeComponent();
         }
-
+        private void frmPets_Load(object sender, EventArgs e)
+        {
+            btnLoad.Focus();
+            pets = petRepository.GetPetList();
+            LoadPetList(pets);
+        }
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            pets = petRepository.GetPetList();
+            LoadPetList(pets);
+            btnUpdate.Enabled = true;
+        }
         void Reset()
         {
             txtPetID.Text = "";
@@ -31,192 +43,327 @@ namespace WinformPetStore
             txtQuantityInStock.Text = "";
             txtStatus.Text = "";
         }
-
-        void LoadListView()
+        string CategoryPet(int id)
         {
-            var pets = petRepository.GetPetList();
+            string s = "";
+            switch (id)
+            {
+                case 1:
+                    {
+                        s = "Dog";
+                        break;
+                    }
+                case 2:
+                    {
+                        s = "Cat";
+                        break;
+                    }
+                case 3:
+                    {
+                        s = "Rabbit";
+                        break;
+                    }
+                case 4:
+                    {
+                        s = "Hamster";
+                        break;
+                    }
+                case 5:
+                    {
+                        s = "Hedgehog";
+                        break;
+                    }
+
+                default:
+                    {
+                        s = "Animal";
+                        break;
+                    }
+            }
+            return s;
+        }
+        int CategoryPet(string cate)
+        {
+            int id = 0;
+            switch (cate)
+            {
+                case "Dog":
+                    {
+                        id = 1;
+                        break;
+                    }
+                case "dog":
+                    {
+                        id = 1;
+                        break;
+                    }
+                case "Cat":
+                    {
+                        id = 2;
+                        break;
+                    }
+                case "cat":
+                    {
+                        id = 2;
+                        break;
+                    }
+                case "Rabbit":
+                    {
+                        id = 3;
+                        break;
+                    }
+                case "rabbit":
+                    {
+                        id = 3;
+                        break;
+                    }
+                case "Hamster":
+                    {
+                        id = 4;
+                        break;
+                    }
+                case "hamster":
+                    {
+                        id = 4;
+                        break;
+                    }
+                case "Hedgehog":
+                    {
+                        id = 5;
+                        break;
+                    }
+                case "hedgehog":
+                    {
+                        id = 5;
+                        break;
+                    }
+            }
+            return id;
+        }
+        //private PetObject GetPet()
+        //{
+        //    PetObject pet = null;
+        //    try
+        //    {
+        //        bool gender = txtGender.Text.Trim().Equals("male", StringComparison.OrdinalIgnoreCase);
+        //        bool status = txtStatus.Text.Trim().Equals("Actived", StringComparison.OrdinalIgnoreCase);
+        //        int category = CategoryPet(txtCategoryID.Text);
+        //        pet = new PetObject(int.Parse(txtPetID.Text),
+        //                            txtPetName.Text,
+        //                            int.Parse(txtAge.Text),
+        //                            gender,
+        //                            txtColor.Text,
+        //                            int.Parse(txtQuantityInStock.Text),
+        //                            category,
+        //                            decimal.Parse(txtImportPrice.Text),
+        //                            decimal.Parse(txtExportPrice.Text),
+        //                            status);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        //MessageBox.Show(e.Message, "Get pet");
+        //    }
+        //    return pet;
+        //}
+
+        private void LoadPetList(IEnumerable<PetObject> list)
+        {
             try
             {
-                source = new BindingSource();
-                source.DataSource = pets;
-                txtPetID.DataBindings.Clear();
-                txtPetName.DataBindings.Clear();
-                txtAge.DataBindings.Clear();
-                txtColor.DataBindings.Clear();
-                txtGender.DataBindings.Clear();
-                txtCategoryID.DataBindings.Clear();
-                txtImportPrice.DataBindings.Clear();
-                txtExportPrice.DataBindings.Clear();
-                txtQuantityInStock.DataBindings.Clear();
-                txtStatus.DataBindings.Clear();
-
-                txtPetID.DataBindings.Add("Text", source, "PetID");
-                txtPetName.DataBindings.Add("Text", source, "PetName");
-                txtAge.DataBindings.Add("Text", source, "Age");
-                txtColor.DataBindings.Add("Text", source, "Color");
-                txtGender.DataBindings.Add("Text", source, "Gender");
-                txtCategoryID.DataBindings.Add("Text", source, "CategoryID");
-                txtImportPrice.DataBindings.Add("Text", source, "ImportPrice");
-                txtExportPrice.DataBindings.Add("Text", source, "ExportPrice");
-                txtQuantityInStock.DataBindings.Add("Text", source, "QuantityInStock");
-                txtStatus.DataBindings.Add("Text", source, "Status");
-
-                dgvPetList.DataSource = null;
-                dgvPetList.DataSource = source;
-
-                dgvPetList.Columns["PetID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["PetName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Age"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Color"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Gender"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["CategoryID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["ImportPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["ExportPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["QuantityInStock"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Status"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                dgvPetList.Columns["PetID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["PetName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dgvPetList.Columns["Age"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Color"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Gender"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["CategoryID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["ImportPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvPetList.Columns["ExportPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvPetList.Columns["QuantityInStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                if (pets.Count() == 0)
+                if (list.Count() == 0)
                 {
                     Reset();
+                    btnUpdate.Enabled = false;
                     btnDelete.Enabled = false;
+                    MessageBox.Show("Sorry, we can't show result you want!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (list.Count() == 1)
+                {
+                    btnDelete.Enabled = false;
+                    dgvPetList.Rows.Clear();
+                    PetObject pet = list.ElementAt(0);
+                    string gender = pet.Gender ? "Male" : " Female";
+                    string status = pet.Status ? "Actived" : "Deactived";
+                    string category = CategoryPet(pet.CategoryID);
+                    dgvPetList.Rows.Add(pet.PetID, category, pet.PetName, pet.Age, gender, pet.Color,
+                        pet.QuantityInStock, pet.ImportPrice, pet.ExportPrice, status);
                 }
                 else
                 {
                     btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
+                    dgvPetList.Rows.Clear();
+                    foreach (var pet in list)
+                    {
+                        string gender = pet.Gender ? "Male" : " Female";
+                        string category = CategoryPet(pet.CategoryID);
+                        string status = pet.Status ? "Actived" : "Deactived";
+                        dgvPetList.Rows.Add(pet.PetID, category, pet.PetName, pet.Age, gender, pet.Color,
+                        pet.QuantityInStock, pet.ImportPrice, pet.ExportPrice, status);
+                    }
                 }
+                source.DataSource = list;
+                Reset();
+
+                txtPetID.DataBindings.Add("Text", source, "PetID");
+                txtPetName.DataBindings.Add("Text", source, "PetName");
+                txtCategoryID.DataBindings.Add("Text", source, "CategoryID");
+                txtGender.DataBindings.Add("Text", source, "Gender");
+                txtColor.DataBindings.Add("Text", source, "Color");
+                txtImportPrice.DataBindings.Add("Text", source, "ImportPrice");
+                txtExportPrice.DataBindings.Add("Text", source, "ExportPrice");
+                txtAge.DataBindings.Add("Text", source, "Age");
+                txtStatus.DataBindings.Add("Text", source, "Status");
+                txtQuantityInStock.DataBindings.Add("Text", source, "QuantityInStock");
+
+                dgvPetList.Columns["PetID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["PetName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["CategoryID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Gender"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Color"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["ImportPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["ExportPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Age"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Status"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Quantity"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvPetList.Columns["PetID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["PetName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvPetList.Columns["CategoryID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvPetList.Columns["Gender"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Color"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["ImportPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPetList.Columns["ExportPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPetList.Columns["Age"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvPetList.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPetList.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvPetList.Columns["PetID"].ReadOnly = true;
+                dgvPetList.Columns["PetName"].ReadOnly = true;
+                dgvPetList.Columns["CategoryID"].ReadOnly = true;
+                dgvPetList.Columns["Gender"].ReadOnly = true;
+                dgvPetList.Columns["Color"].ReadOnly = true;
+                dgvPetList.Columns["ImportPrice"].ReadOnly = true;
+                dgvPetList.Columns["ExportPrice"].ReadOnly = true;
+                dgvPetList.Columns["Age"].ReadOnly = true;
+                dgvPetList.Columns["Status"].ReadOnly = true;
+                dgvPetList.Columns["Quantity"].ReadOnly = true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message, "Load pet list");
+                //MessageBox.Show(ex.Message, "Load member list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private PetObject GetPet()
-        {
-            PetObject pet = null;
-            try
-            {
-                pet = new PetObject(int.Parse(txtPetID.Text),
-                txtPetName.Text, int.Parse(txtAge.Text), bool.Parse(txtGender.Text),
-                txtColor.Text, int.Parse(txtQuantityInStock.Text), int.Parse(txtCategoryID.Text),
-                decimal.Parse(txtImportPrice.Text), decimal.Parse(txtExportPrice.Text), bool.Parse(txtStatus.Text));
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, "Get pet");
-            }
-            return pet;
-        }
-
-        private void frmPets_Load(object sender, EventArgs e)
-        {
-            LoadListView();
-            dgvPetList.CellDoubleClick += DgvPetList_CellDoubleClick;
-        }
-
-        private void DgvPetList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnDelete.Enabled = true;
-            btnSave.Enabled = true;
-            txtPetName.Enabled = true;
-            txtAge.Enabled = true;
-            txtColor.Enabled = true;
-            txtGender.Enabled = true;
-            txtCategoryID.Enabled = true;
-            txtImportPrice.Enabled = true;
-            txtExportPrice.Enabled = true;
-            txtQuantityInStock.Enabled = true;
-            txtStatus.Enabled = true;
-            InsertOrUpdate = true;
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Reset();
-            if (btnAdd.Text.Equals("ADD"))
+            try
             {
-                for (int i = 0; i < dgvPetList.SelectedRows.Count; i++)
+                var frm = new frmPetDetails()
                 {
-                    dgvPetList.SelectedRows[i].Selected = false;
+                    Text = "Add a new pet",
+                    InsertOrUpdate = false,
+                    petRepository = petRepository
+                };
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    pets = petRepository.GetPetList();
+                    LoadPetList(pets);
                 }
-                btnAdd.Text = "CANCEL";
-                btnSave.Enabled = true;
-                txtPetName.Enabled = true;
-                txtAge.Enabled = true;
-                txtColor.Enabled = true;
-                txtGender.Enabled = true;
-                txtCategoryID.Enabled = true;
-                txtImportPrice.Enabled = true;
-                txtExportPrice.Enabled = true;
-                txtQuantityInStock.Enabled = true;
-                txtStatus.Enabled = true;
-                txtPetID.Focus();
-                InsertOrUpdate = false;
             }
-            else
+            catch (Exception ex)
             {
-                btnAdd.Text = "ADD";
-                btnSave.Enabled = false;
-                txtPetName.Enabled = false;
-                txtAge.Enabled = false;
-                txtColor.Enabled = false;
-                txtGender.Enabled = false;
-                txtCategoryID.Enabled = false;
-                txtImportPrice.Enabled = false;
-                txtExportPrice.Enabled = false;
-                txtQuantityInStock.Enabled = false;
-                txtStatus.Enabled = false;
+
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var pet = GetPet();
-            if (InsertOrUpdate == false)
+            try
             {
-                petRepository.InsertPet(pet);
-                btnAdd.Text = "ADD";
+                PetObject pet = currentPet;
+                if (pet.PetID != 0)
+                {
+                    var frm = new frmPetDetails()
+                    {
+                        Text = "Update a pet",
+                        InsertOrUpdate = true,
+                        petRepository = petRepository,
+                        PetInfo = currentPet
+                    };
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        pets = petRepository.GetPetList();
+                        LoadPetList(pets);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Sorry, choose pet you want to update please!", "Update customer message", MessageBoxButtons.OK);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                petRepository.UpdatePet(pet);
-            }
-            btnSave.Enabled = false;
-            txtPetName.Enabled = false;
-            txtAge.Enabled = false;
-            txtColor.Enabled = false;
-            txtGender.Enabled = false;
-            txtCategoryID.Enabled = false;
-            txtImportPrice.Enabled = false;
-            txtExportPrice.Enabled = false;
-            txtQuantityInStock.Enabled = false;
-            txtStatus.Enabled = false;
-            LoadListView();
-            source.Position = source.Count - 1;
-        }
 
+            }
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult d;
-            d = MessageBox.Show("Are you sure to delete?", "Pet Management",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button1);
-            if (d == DialogResult.OK)
+            try
             {
-                var pet = GetPet();
-                petRepository.RemovePet(pet.PetID);
+                var pet = currentPet;
+                if (MessageBox.Show($"Are you sure to delete pet {pet.PetName}?", "Delete confirmation!",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    petRepository.RemovePet(pet.PetID);
+                    MessageBox.Show("Removing successfully!", "Message!", MessageBoxButtons.OK);
+                    LoadPetList(petRepository.GetPetList());
+                }
             }
-            LoadListView();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to delete! Error: " + ex.Message, "Error message!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
+        private void dgvPetList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    var dgvRow = dgvPetList.Rows[e.RowIndex];
+                    txtPetID.Text = dgvRow.Cells[0].Value.ToString();
+                    txtCategoryID.Text = dgvRow.Cells[1].Value.ToString();
+                    txtPetName.Text = dgvRow.Cells[2].Value.ToString();
+                    txtAge.Text = dgvRow.Cells[3].Value.ToString();
+                    txtGender.Text = dgvRow.Cells[4].Value.ToString();
+                    txtColor.Text = dgvRow.Cells[5].Value.ToString();
+                    txtQuantityInStock.Text = dgvRow.Cells[6].Value.ToString();
+                    txtImportPrice.Text = dgvRow.Cells[7].Value.ToString();
+                    txtExportPrice.Text = dgvRow.Cells[8].Value.ToString();
+                    txtStatus.Text = dgvRow.Cells[9].Value.ToString();
+
+                    currentPet.PetID = int.Parse(dgvRow.Cells[0].Value.ToString());
+                    string category = dgvRow.Cells[1].Value.ToString();
+                    currentPet.CategoryID = CategoryPet(category);
+                    currentPet.PetName = dgvRow.Cells[2].Value.ToString();
+                    currentPet.Age = int.Parse(dgvRow.Cells[3].Value.ToString());
+                    currentPet.Gender = dgvRow.Cells[4].Value.ToString().Equals("Male", StringComparison.OrdinalIgnoreCase);
+                    currentPet.Color = dgvRow.Cells[5].Value.ToString();
+                    currentPet.QuantityInStock = int.Parse(dgvRow.Cells[6].Value.ToString());
+                    currentPet.ImportPrice = decimal.Parse(dgvRow.Cells[7].Value.ToString());
+                    currentPet.ExportPrice = decimal.Parse(dgvRow.Cells[8].Value.ToString());
+                    currentPet.Status = dgvRow.Cells[9].Value.ToString().Equals("Actived", StringComparison.OrdinalIgnoreCase);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
     }
 }

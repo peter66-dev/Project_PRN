@@ -26,6 +26,7 @@ namespace GroupAssignment
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             frmLogin frm = new frmLogin();
             Application.Run(frm);
 
