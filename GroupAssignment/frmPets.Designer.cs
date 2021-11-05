@@ -59,11 +59,13 @@ namespace WinformPetStore
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lbStatus = new System.Windows.Forms.Label();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.btnLoad = new System.Windows.Forms.Button();
             this.lbPetID = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.lbStatus = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPetList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -290,60 +292,70 @@ namespace WinformPetStore
             // 
             this.PetID.DataPropertyName = "PetID";
             this.PetID.HeaderText = "Pet ID";
+            this.PetID.MinimumWidth = 6;
             this.PetID.Name = "PetID";
             // 
             // CategoryID
             // 
             this.CategoryID.DataPropertyName = "CategoryID";
             this.CategoryID.HeaderText = "Category";
+            this.CategoryID.MinimumWidth = 6;
             this.CategoryID.Name = "CategoryID";
             // 
             // PetName
             // 
             this.PetName.DataPropertyName = "PetName";
             this.PetName.HeaderText = "Pet Name";
+            this.PetName.MinimumWidth = 6;
             this.PetName.Name = "PetName";
             // 
             // Age
             // 
             this.Age.DataPropertyName = "Age";
             this.Age.HeaderText = "Age";
+            this.Age.MinimumWidth = 6;
             this.Age.Name = "Age";
             // 
             // Gender
             // 
             this.Gender.DataPropertyName = "Gender";
             this.Gender.HeaderText = "Gender";
+            this.Gender.MinimumWidth = 6;
             this.Gender.Name = "Gender";
             // 
             // Color
             // 
             this.Color.DataPropertyName = "Color";
             this.Color.HeaderText = "Color";
+            this.Color.MinimumWidth = 6;
             this.Color.Name = "Color";
             // 
             // Quantity
             // 
             this.Quantity.DataPropertyName = "Quantity";
             this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
             this.Quantity.Name = "Quantity";
             // 
             // ImportPrice
             // 
             this.ImportPrice.DataPropertyName = "ImportPrice";
             this.ImportPrice.HeaderText = "Import Price";
+            this.ImportPrice.MinimumWidth = 6;
             this.ImportPrice.Name = "ImportPrice";
             // 
             // ExportPrice
             // 
             this.ExportPrice.DataPropertyName = "ExportPrice";
             this.ExportPrice.HeaderText = "Export Price";
+            this.ExportPrice.MinimumWidth = 6;
             this.ExportPrice.Name = "ExportPrice";
             // 
             // Status
             // 
             this.Status.DataPropertyName = "Status";
             this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
             // 
             // btnAdd
@@ -375,17 +387,6 @@ namespace WinformPetStore
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // lbStatus
-            // 
-            this.lbStatus.AutoSize = true;
-            this.lbStatus.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbStatus.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbStatus.Location = new System.Drawing.Point(12, 164);
-            this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(61, 22);
-            this.lbStatus.TabIndex = 1024;
-            this.lbStatus.Text = "Status";
             // 
             // txtStatus
             // 
@@ -438,12 +439,45 @@ namespace WinformPetStore
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(670, 209);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(151, 23);
+            this.cbCategory.TabIndex = 1029;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbStatus.ForeColor = System.Drawing.Color.SandyBrown;
+            this.lbStatus.Location = new System.Drawing.Point(12, 164);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(61, 22);
+            this.lbStatus.TabIndex = 1024;
+            this.lbStatus.Text = "Status";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.SandyBrown;
+            this.label1.Location = new System.Drawing.Point(458, 210);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(163, 22);
+            this.label1.TabIndex = 1030;
+            this.label1.Text = "Filter By Category";
+            // 
             // frmPetss
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(55)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(959, 561);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.lbPetID);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.txtStatus);
@@ -503,7 +537,6 @@ namespace WinformPetStore
         private System.Windows.Forms.DataGridView dgvPetList;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Label lbPetID;
@@ -518,5 +551,8 @@ namespace WinformPetStore
         private System.Windows.Forms.DataGridViewTextBoxColumn ImportPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExportPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.Label label1;
     }
 }

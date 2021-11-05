@@ -4,12 +4,14 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace WinformPetStore
 {
     public partial class frmPetss : Form
     {
         IPetRepository petRepository = new PetRepository();
+        ICategoryRepository categoryRepository = new CategoryRepository();
         BindingSource source = new BindingSource();
         IEnumerable<PetObject> pets = new List<PetObject>();
         PetObject currentPet = new PetObject();
@@ -18,18 +20,22 @@ namespace WinformPetStore
         {
             InitializeComponent();
         }
+
         private void frmPets_Load(object sender, EventArgs e)
         {
             btnLoad.Focus();
             pets = petRepository.GetPetList();
             LoadPetList(pets);
+            LoadCategoryList();
         }
+
         private void btnLoad_Click(object sender, EventArgs e)
         {
             pets = petRepository.GetPetList();
             LoadPetList(pets);
             btnUpdate.Enabled = true;
         }
+
         void Reset()
         {
             txtPetID.Text = "";
@@ -42,6 +48,14 @@ namespace WinformPetStore
             txtExportPrice.Text = "";
             txtQuantityInStock.Text = "";
             txtStatus.Text = "";
+        }
+
+        private void LoadCategoryList()
+        {
+            var categories = categoryRepository.GetCategoryList();
+            cbCategory.DataSource = categories;
+            cbCategory.DisplayMember = "CategoryName";
+            cbCategory.ValueMember = "CategoryID";
         }
         string CategoryPet(int id)
         {
@@ -82,6 +96,7 @@ namespace WinformPetStore
             }
             return s;
         }
+
         int CategoryPet(string cate)
         {
             int id = 0;
@@ -254,6 +269,7 @@ namespace WinformPetStore
                 //MessageBox.Show(ex.Message, "Load member list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -306,6 +322,7 @@ namespace WinformPetStore
 
             }
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -365,5 +382,35 @@ namespace WinformPetStore
             }
         }
 
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int categoryID = int.Parse(cbCategory.SelectedValue.ToString());
+                string catename = cbCategory.Text.Trim();
+                int cateID = CategoryPet(catename);
+                if (cateID >= 1 && cateID <= 5)
+                {
+                    var pets = petRepository.GetPetList();
+                    var list = new List<PetObject>();
+                    foreach (var pet in pets)
+                    {
+                        if (pet.CategoryID == categoryID)
+                        {
+                            list.Add(pet);
+                        }
+                    }
+                    LoadPetList(list);
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, we just have Dog, Cat, Rabbit, Hamster, Hedgehog!", "Category message", MessageBoxButtons.OK);
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }
