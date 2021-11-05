@@ -48,7 +48,7 @@ namespace DataAccess
             connection = new SqlConnection(GetConnectionString());
             List<PetObject> list = new List<PetObject>();
             command = new SqlCommand("select PetID, PetName, Age, Gender, Color, QuantityInStock, " +
-                "CategoryID, ImportPrice, ExportPrice, Status from tblPets where status = 1", connection);
+                "CategoryID, ImportPrice, ExportPrice, Status from tblPets", connection);
             try
             {
                 connection.Open();
@@ -198,7 +198,7 @@ namespace DataAccess
             connection = new SqlConnection(GetConnectionString());
             command = new SqlCommand("update tblPets set PetName = @PetName, Age = @Age, Gender = @Gender, " +
                 "Color = @Color, QuantityInStock = @QuantityInStock, CategoryID = @CategoryID, ImportPrice = @ImportPrice, " +
-                "ExportPrice = @ExportPrice where PetID = @PetID", connection);
+                "ExportPrice = @ExportPrice, Status = @status where PetID = @PetID", connection);
             command.Parameters.AddWithValue("@PetName", pet.PetName);
             command.Parameters.AddWithValue("@PetID", pet.PetID);
             command.Parameters.AddWithValue("@Age", pet.Age);
@@ -208,6 +208,16 @@ namespace DataAccess
             command.Parameters.AddWithValue("@CategoryID", pet.CategoryID);
             command.Parameters.AddWithValue("@ImportPrice", pet.ImportPrice);
             command.Parameters.AddWithValue("@ExportPrice", pet.ExportPrice);
+            if (pet.QuantityInStock == 0)
+            {
+                pet.Status = false;
+            }
+            else
+            {
+                pet.Status = true;
+            }
+            command.Parameters.AddWithValue("@status", pet.Status);
+
             try
             {
                 connection.Open();

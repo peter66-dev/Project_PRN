@@ -14,7 +14,7 @@ namespace GroupAssignment
         public IBillDetailRepository billDetailRepository = new BillDetailRepository();
         public ICustomerRepository cusRepository = new CustomerRepository();
         List<PetObject> cart = new List<PetObject>();
-
+        int check = 0;
         public frmBillDetails()
         {
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace GroupAssignment
         private bool CheckCustomerInfo()
         {
             bool check = true;
-            if (txtPhone.Text.Trim().Length ==0)
+            if (txtPhone.Text.Trim().Length == 0)
             {
                 check = false;
                 MessageBox.Show("Sorry, you must fill in Email information before adding pet please!", "Check form customer message", MessageBoxButtons.OK);
@@ -93,7 +93,7 @@ namespace GroupAssignment
                     MessageBox.Show("Sorry, Freight must be in [0-1000000] VND!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnSave.Enabled = false;
                 }
-                else if (!(decimal.TryParse(txtPaidAmount.Text, out decimal paid)))
+                else if (!(decimal.TryParse(txtPaidAmount.Text, out decimal paid) && paid > 0))
                 {
                     txtPaidAmount.Focus();
                     check = false;
@@ -102,9 +102,70 @@ namespace GroupAssignment
                 }
                 else
                 {
-                    double paidAmount = double.Parse(txtPaidAmount.Text);
-                    double freight = double.Parse(txtFreight.Text);
-                    double grandTotal = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2);
+                    decimal paidAmount = decimal.Parse(txtPaidAmount.Text);
+                    decimal freight = decimal.Parse(txtFreight.Text);
+                    decimal grandTotal = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2);
+                    if (!(paidAmount - grandTotal - freight >= 0))
+                    {
+                        check = false;
+                        txtPaidAmount.Focus();
+                        MessageBox.Show($"Paid Amount: {paidAmount} is not enough for this bill value:\n" +
+                            $"{grandTotal} + {freight} = {grandTotal + freight}!",
+                        "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnSave.Enabled = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return check;
+        }
+
+        private bool CheckFormCalculation0()
+        {
+            bool check = true;
+            try
+            {
+                if (!(float.TryParse(txtDiscount.Text, out float discount) && (discount >= 0 && discount < 1)))
+                {
+                    txtDiscount.Focus();
+                    check = false;
+                    MessageBox.Show("Sorry, discount must be in [0-1) please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnSave.Enabled = false;
+                }
+                else if (!(decimal.TryParse(txtFreight.Text, out decimal valuee) && (valuee >= 0 && valuee <= 1000000)))
+                {
+                    txtFreight.Focus();
+                    check = false;
+                    MessageBox.Show("Sorry, Freight must be in [0-1000000] VND!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnSave.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return check;
+        }
+
+        private bool CheckFormCalculation1()
+        {
+            bool check = true;
+            try
+            {
+                if (!(decimal.TryParse(txtPaidAmount.Text, out decimal paid) && paid > 0))
+                {
+                    txtPaidAmount.Focus();
+                    check = false;
+                    MessageBox.Show("Sorry, Paid Amount must be in positive number!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnSave.Enabled = false;
+                }
+                else
+                {
+                    decimal paidAmount = decimal.Parse(txtPaidAmount.Text);
+                    decimal freight = decimal.Parse(txtFreight.Text);
+                    decimal grandTotal = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2);
                     if (!(paidAmount - grandTotal - freight >= 0))
                     {
                         check = false;
@@ -117,11 +178,12 @@ namespace GroupAssignment
             }
             catch (Exception ex)
             {
+
             }
             return check;
         }
 
-        private double GrandTotal(float discount) => SubTotal() * (1 - discount);
+        private decimal GrandTotal(float discount) => (decimal)(SubTotal() * (1 - discount));
 
         private double SubTotal()
         {
@@ -201,6 +263,7 @@ namespace GroupAssignment
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
+            {/*
             if (CheckFormCalculation())
             {
                 txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2).ToString();
@@ -230,7 +293,47 @@ namespace GroupAssignment
                     MessageBox.Show($"Sorry, we don't have enough quantity for pets name: {msg}.\n" +
                         $"Please cancel this bill!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            */
+            }
+            if (check == 0)
+            {
+                if (CheckFormCalculation0())
+                {
+                    txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)) + decimal.Parse(txtFreight.Text), 2).ToString();
+                    btnAdd.Enabled = false;
+                    btnAdd.BackColor = Color.LightGray;
 
+                    List<string> checkQuantityPet = petRepository.CheckQuantity(cart);
+                    if (checkQuantityPet.Count == 0)
+                    {
+                        MessageBox.Show($"Quantity in stock is enough for this bill\n" +
+                            $"Please check bill carefully before saving!", "Message", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        btnSave.Enabled = false;
+                        string msg = "";
+                        foreach (string str in checkQuantityPet)
+                        {
+                            msg += str + " | ";
+                        }
+                        MessageBox.Show($"Sorry, we don't have enough quantity for pets name: {msg}.\n" +
+                            $"Please cancel this bill!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    ++check;
+                }
+            }
+            else if (check == 1)
+            {
+                if (CheckFormCalculation1())
+                {
+                    txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)) + decimal.Parse(txtFreight.Text), 2).ToString();
+                    double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text) - (double)decimal.Parse(txtFreight.Text);
+                    txtReturnAmount.Text = Math.Round(returnAmount, 2).ToString();
+                    btnSave.Enabled = true;
+                    btnSave.BackColor = Color.DeepSkyBlue;
+                }
             }
         }
 
@@ -240,11 +343,11 @@ namespace GroupAssignment
             {
                 CustomerObject cus = cusRepository.GetACustomerByPhone(txtPhone.Text.Trim());
 
-                int countingbills = 5 + billRepository.GetTotalBill(); 
+                int countingbills = 5 + billRepository.GetTotalBill();
                 // có khóa là int KHÔNG TỰ TĂNG nên phải đếm số lượng rồi +5 làm khóa
                 decimal freight = Math.Round(decimal.Parse(txtFreight.Text), 2);
-                decimal total = Math.Round(decimal.Parse(txtGrandTotal.Text) + freight);
-                billRepository.InsertBill(countingbills, cus.CustomerID, total, freight); // freight là phí ship!
+                double total = Math.Round(double.Parse(txtGrandTotal.Text), 2);
+                billRepository.InsertBill(countingbills, cus.CustomerID, (decimal)total, freight); // freight là phí ship!
                 //add new bill details
                 foreach (var pet in cart)
                 {
@@ -325,7 +428,7 @@ namespace GroupAssignment
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, we can't find customer by this email hint!","Message",MessageBoxButtons.OK);
+                    MessageBox.Show("Sorry, we can't find customer by this email hint!", "Message", MessageBoxButtons.OK);
                 }
             }
             else

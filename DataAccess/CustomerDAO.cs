@@ -258,6 +258,68 @@ namespace DataAccess
             return cus;
         }
 
+        public bool CheckCustomerByEmailAndPhone(string email, string phone) // check exist when create a new customer
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select AccumulatedPoint From tblCustomers where Email = @Email and Phone = @Phone", connection);
+            command.Parameters.AddWithValue("@Email", email);
+            command.Parameters.AddWithValue("@Phone", phone);
+            bool check = false;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        check = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
+        public bool CheckCustomerByIDandEmailAndPhone(int id, string email, string phone) // check exist when updating a new customer
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select AccumulatedPoint From tblCustomers " +
+                "where Email = @Email and Phone = @Phone and CustomerID != @CustomerID", connection);
+            command.Parameters.AddWithValue("@Email", email);
+            command.Parameters.AddWithValue("@Phone", phone);
+            command.Parameters.AddWithValue("@CustomerID", id);
+            bool check = false;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        check = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return check;
+        }
+
         public List<CustomerObject> GetCustomerByEmail(string email)
         {
             connection = new SqlConnection(GetConnectionString());

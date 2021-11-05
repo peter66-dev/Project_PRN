@@ -150,7 +150,7 @@ namespace GroupAssignment
             this.txtPetID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPetID.Name = "txtPetID";
             this.txtPetID.Size = new System.Drawing.Size(133, 22);
-            this.txtPetID.TabIndex = 5;
+            this.txtPetID.TabIndex = 2;
             this.txtPetID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPetID.TextChanged += new System.EventHandler(this.txtPetID_TextChanged);
             // 
@@ -275,7 +275,7 @@ namespace GroupAssignment
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 45);
-            this.btnAdd.TabIndex = 5;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -290,7 +290,7 @@ namespace GroupAssignment
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(139, 46);
-            this.btnSave.TabIndex = 11;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -337,7 +337,7 @@ namespace GroupAssignment
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(153, 22);
-            this.txtDiscount.TabIndex = 7;
+            this.txtDiscount.TabIndex = 5;
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbDiscount
@@ -356,7 +356,7 @@ namespace GroupAssignment
             // 
             this.txtGrandTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGrandTotal.Enabled = false;
-            this.txtGrandTotal.Location = new System.Drawing.Point(754, 335);
+            this.txtGrandTotal.Location = new System.Drawing.Point(754, 368);
             this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.Size = new System.Drawing.Size(153, 22);
@@ -369,7 +369,7 @@ namespace GroupAssignment
             this.lbGrandTotal.AutoSize = true;
             this.lbGrandTotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbGrandTotal.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbGrandTotal.Location = new System.Drawing.Point(635, 336);
+            this.lbGrandTotal.Location = new System.Drawing.Point(635, 369);
             this.lbGrandTotal.Name = "lbGrandTotal";
             this.lbGrandTotal.Size = new System.Drawing.Size(68, 15);
             this.lbGrandTotal.TabIndex = 333;
@@ -382,7 +382,7 @@ namespace GroupAssignment
             this.txtPaidAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPaidAmount.Name = "txtPaidAmount";
             this.txtPaidAmount.Size = new System.Drawing.Size(153, 22);
-            this.txtPaidAmount.TabIndex = 9;
+            this.txtPaidAmount.TabIndex = 7;
             this.txtPaidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbPaidAmount
@@ -449,7 +449,7 @@ namespace GroupAssignment
             0});
             this.txtQuantityBuy.Name = "txtQuantityBuy";
             this.txtQuantityBuy.Size = new System.Drawing.Size(120, 22);
-            this.txtQuantityBuy.TabIndex = 6;
+            this.txtQuantityBuy.TabIndex = 3;
             this.txtQuantityBuy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantityBuy.Value = new decimal(new int[] {
             1,
@@ -490,7 +490,7 @@ namespace GroupAssignment
             this.btnCheck.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(88, 46);
-            this.btnCheck.TabIndex = 10;
+            this.btnCheck.TabIndex = 7;
             this.btnCheck.Text = "CHECK";
             this.btnCheck.UseVisualStyleBackColor = false;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
@@ -498,11 +498,11 @@ namespace GroupAssignment
             // txtFreight
             // 
             this.txtFreight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFreight.Location = new System.Drawing.Point(754, 371);
+            this.txtFreight.Location = new System.Drawing.Point(754, 330);
             this.txtFreight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFreight.Name = "txtFreight";
             this.txtFreight.Size = new System.Drawing.Size(153, 22);
-            this.txtFreight.TabIndex = 8;
+            this.txtFreight.TabIndex = 6;
             this.txtFreight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbFreight
@@ -511,7 +511,7 @@ namespace GroupAssignment
             this.lbFreight.AutoSize = true;
             this.lbFreight.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbFreight.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbFreight.Location = new System.Drawing.Point(635, 373);
+            this.lbFreight.Location = new System.Drawing.Point(635, 332);
             this.lbFreight.Name = "lbFreight";
             this.lbFreight.Size = new System.Drawing.Size(48, 15);
             this.lbFreight.TabIndex = 333;
@@ -529,7 +529,7 @@ namespace GroupAssignment
             this.cboCusGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboCusGender.Name = "cboCusGender";
             this.cboCusGender.Size = new System.Drawing.Size(83, 23);
-            this.cboCusGender.TabIndex = 3;
+            this.cboCusGender.TabIndex = 4444;
             // 
             // lbAddress
             // 
@@ -595,7 +595,7 @@ namespace GroupAssignment
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(143, 22);
-            this.txtPhone.TabIndex = 2;
+            this.txtPhone.TabIndex = 3333;
             // 
             // lbCusInfo
             // 
@@ -617,7 +617,7 @@ namespace GroupAssignment
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(143, 53);
-            this.txtAddress.TabIndex = 4;
+            this.txtAddress.TabIndex = 42333;
             // 
             // txtColor
             // 
@@ -662,7 +662,7 @@ namespace GroupAssignment
             this.txtPoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPoint.Name = "txtPoint";
             this.txtPoint.Size = new System.Drawing.Size(83, 22);
-            this.txtPoint.TabIndex = 2;
+            this.txtPoint.TabIndex = 2333;
             this.txtPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbCusName
@@ -683,7 +683,7 @@ namespace GroupAssignment
             this.txtCusName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(181, 22);
-            this.txtCusName.TabIndex = 1;
+            this.txtCusName.TabIndex = 1333;
             // 
             // frmBillDetails
             // 

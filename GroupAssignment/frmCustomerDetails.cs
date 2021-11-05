@@ -104,37 +104,57 @@ namespace WinformPetStore
             {
                 if (CheckForm())
                 {
+                    string email = txtEmail.Text.Trim();
+                    string phone = txtPhone.Text.Trim();
                     if (InsertOrUpdate) // update
                     {
-                        CustomerObject cus = new CustomerObject();
-                        cus.CustomerID = int.Parse(txtCusID.Text);
-                        cus.CustomerName = txtCusName.Text.Trim();
-                        cus.Gender = cboGender.Text.Equals("male", StringComparison.OrdinalIgnoreCase) ? true : false;
-                        cus.Phone = txtPhone.Text.Trim();
-                        cus.Email = txtEmail.Text.Trim();
-                        cus.Address = txtAddress.Text.Trim();
-                        cus.AccumulatedPoint = Decimal.ToInt32(txtPoint.Value);
-                        cus.Status = true;
-                        customerRepository.UpdateCustomer(cus);
-                        MessageBox.Show("Updating a customer successfully!\n" +
-                            "Load again to see new list!", "Message", MessageBoxButtons.OK);
-                        Close();
+                        if (customerRepository.CheckCustomerByIDandEmailAndPhone(int.Parse(txtCusID.Text), email, phone)) // existed in system!
+                        {
+                            MessageBox.Show("Sorry, this email and phone has existed in system!\n" +
+                                "Please update another email or phone number!", "Message", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                            txtEmail.Focus();
+                        }
+                        else
+                        {
+                            CustomerObject cus = new CustomerObject();
+                            cus.CustomerID = int.Parse(txtCusID.Text);
+                            cus.CustomerName = txtCusName.Text.Trim();
+                            cus.Gender = cboGender.Text.Equals("male", StringComparison.OrdinalIgnoreCase) ? true : false;
+                            cus.Phone = phone;
+                            cus.Email = email;
+                            cus.Address = txtAddress.Text.Trim();
+                            cus.AccumulatedPoint = Decimal.ToInt32(txtPoint.Value);
+                            cus.Status = true;
+                            customerRepository.UpdateCustomer(cus);
+                            MessageBox.Show("Updating a customer successfully!\n" +
+                                "Load again to see new list!", "Message", MessageBoxButtons.OK);
+                            Close();
+                        }
                     }
                     else
                     {
-                        CustomerObject cus = new CustomerObject();
-                        cus.CustomerID = 0;
-                        cus.CustomerName = txtCusName.Text.Trim();
-                        cus.Gender = cboGender.Text.Equals("male", StringComparison.OrdinalIgnoreCase) ? true : false;
-                        cus.Phone = txtPhone.Text.Trim();
-                        cus.Email = txtEmail.Text.Trim();
-                        cus.Address = txtAddress.Text.Trim();
-                        cus.AccumulatedPoint = Decimal.ToInt32(txtPoint.Value);
-                        cus.Status = true;
-                        customerRepository.InsertCustomer(cus);
-                        MessageBox.Show("Adding a new customer successfully!\n" +
-                            "Load again to see new list!", "Message", MessageBoxButtons.OK);
-                        Close();
+                        if (customerRepository.CheckCustomerByEmailAndPhone(email, phone)) // existed in system!
+                        {
+                            MessageBox.Show("Sorry, this email and phone has existed in system!\n" +
+                                "Please update status for this customer instead of creating a new account", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtEmail.Focus();
+                        }
+                        else
+                        {
+                            CustomerObject cus = new CustomerObject();
+                            cus.CustomerID = 0;
+                            cus.CustomerName = txtCusName.Text.Trim();
+                            cus.Gender = cboGender.Text.Equals("male", StringComparison.OrdinalIgnoreCase) ? true : false;
+                            cus.Phone = phone;
+                            cus.Email = email;
+                            cus.Address = txtAddress.Text.Trim();
+                            cus.AccumulatedPoint = Decimal.ToInt32(txtPoint.Value);
+                            cus.Status = true;
+                            customerRepository.InsertCustomer(cus);
+                            MessageBox.Show("Adding a new customer successfully!\n" +
+                                "Load again to see new list!", "Message", MessageBoxButtons.OK);
+                            Close();
+                        }
                     }
                 }
             }

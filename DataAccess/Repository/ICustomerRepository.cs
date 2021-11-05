@@ -22,5 +22,7 @@ namespace DataAccess.Repository
         public List<CustomerObject> SortCustomerDescendingName();
         public CustomerObject GetACustomerByEmail(string email);
         public CustomerObject GetACustomerByPhone(string phone);
+        public bool CheckCustomerByEmailAndPhone(string email, string phone);
+        public bool CheckCustomerByIDandEmailAndPhone(int id, string email, string phone);
     }
 }
