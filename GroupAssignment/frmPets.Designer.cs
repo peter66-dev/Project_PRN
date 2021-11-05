@@ -60,7 +60,6 @@ namespace WinformPetStore
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtStatus = new System.Windows.Forms.TextBox();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.lbPetID = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.cbCategory = new System.Windows.Forms.ComboBox();
@@ -210,7 +209,7 @@ namespace WinformPetStore
             this.lbImportPrice.AutoSize = true;
             this.lbImportPrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbImportPrice.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbImportPrice.Location = new System.Drawing.Point(682, 72);
+            this.lbImportPrice.Location = new System.Drawing.Point(683, 63);
             this.lbImportPrice.Name = "lbImportPrice";
             this.lbImportPrice.Size = new System.Drawing.Size(112, 22);
             this.lbImportPrice.TabIndex = 1015;
@@ -366,7 +365,7 @@ namespace WinformPetStore
             this.btnAdd.BackColor = System.Drawing.Color.SandyBrown;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnAdd.Location = new System.Drawing.Point(840, 320);
+            this.btnAdd.Location = new System.Drawing.Point(840, 256);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(113, 45);
@@ -381,7 +380,7 @@ namespace WinformPetStore
             this.btnDelete.BackColor = System.Drawing.Color.SandyBrown;
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnDelete.Location = new System.Drawing.Point(840, 449);
+            this.btnDelete.Location = new System.Drawing.Point(840, 385);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 45);
@@ -400,21 +399,6 @@ namespace WinformPetStore
             this.txtStatus.TabIndex = 1025;
             this.txtStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnLoad
-            // 
-            this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoad.BackColor = System.Drawing.Color.SandyBrown;
-            this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLoad.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnLoad.Location = new System.Drawing.Point(840, 256);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(113, 45);
-            this.btnLoad.TabIndex = 4;
-            this.btnLoad.Text = "LOAD";
-            this.btnLoad.UseVisualStyleBackColor = false;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
             // lbPetID
             // 
             this.lbPetID.AutoSize = true;
@@ -432,7 +416,7 @@ namespace WinformPetStore
             this.btnUpdate.BackColor = System.Drawing.Color.SandyBrown;
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnUpdate.Location = new System.Drawing.Point(840, 384);
+            this.btnUpdate.Location = new System.Drawing.Point(840, 320);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(113, 45);
@@ -443,10 +427,11 @@ namespace WinformPetStore
             // 
             // cbCategory
             // 
+            this.cbCategory.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(683, 214);
+            this.cbCategory.Location = new System.Drawing.Point(481, 211);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(151, 23);
+            this.cbCategory.Size = new System.Drawing.Size(133, 23);
             this.cbCategory.TabIndex = 3;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -463,14 +448,15 @@ namespace WinformPetStore
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.SandyBrown;
-            this.label1.Location = new System.Drawing.Point(501, 215);
+            this.label1.Location = new System.Drawing.Point(348, 212);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 22);
+            this.label1.Size = new System.Drawing.Size(86, 22);
             this.label1.TabIndex = 1030;
-            this.label1.Text = "Filter By Category";
+            this.label1.Text = "Category";
             // 
             // txtSearch
             // 
@@ -487,7 +473,7 @@ namespace WinformPetStore
             this.lbSearch.AutoSize = true;
             this.lbSearch.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbSearch.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbSearch.Location = new System.Drawing.Point(35, 217);
+            this.lbSearch.Location = new System.Drawing.Point(12, 217);
             this.lbSearch.Name = "lbSearch";
             this.lbSearch.Size = new System.Drawing.Size(67, 22);
             this.lbSearch.TabIndex = 1024;
@@ -502,7 +488,6 @@ namespace WinformPetStore
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.lbPetID);
-            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.lbSearch);
@@ -563,7 +548,6 @@ namespace WinformPetStore
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtStatus;
-        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Label lbPetID;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PetID;

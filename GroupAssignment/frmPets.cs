@@ -23,17 +23,9 @@ namespace WinformPetStore
 
         private void frmPets_Load(object sender, EventArgs e)
         {
-            btnLoad.Focus();
             pets = petRepository.GetPetList();
             LoadPetList(pets);
             LoadCategoryList();
-        }
-
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            pets = petRepository.GetPetList();
-            LoadPetList(pets);
-            btnUpdate.Enabled = true;
         }
 
         void Reset()

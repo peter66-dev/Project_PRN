@@ -54,51 +54,6 @@ namespace GroupAssignment
             txtUnitPrice.Clear();
         }
 
-        /* private bool CheckCustomerInfo()
-         {
-             bool check = true;
-
-             try
-             {
-                 if (txtEmail.Text.Trim().Length == 0)
-                 {
-                     txtEmail.Focus();
-                     check = false;
-                     MessageBox.Show("Sorry, Customer name is not empty please!!!", "Message", MessageBoxButtons.OK);
-                 }
-                 else if (!(txtPhone.Text.Trim().Length >= 10 && txtPhone.Text.Trim().Length <= 12 
-                     && (Decimal.TryParse(txtPhone.Text, out decimal phone) && phone > 0)))
-                 {
-                     txtPhone.Focus();
-                     check = false;
-                     MessageBox.Show("Sorry, Phone number must have [10-12] number please!!!", "Message", MessageBoxButtons.OK);
-                 }
-                 else if (txtAddress.Text.Trim().Length < 5)
-                 {
-                     txtAddress.Focus();
-                     check = false;
-                     MessageBox.Show("Sorry, customer's address don't have enough infomation!!!", "Message", MessageBoxButtons.OK);
-                 }
-                 else if (!(cboCusGender.Text.Equals("Male") || cboCusGender.Text.Equals("Female")))
-                 {
-                     cboCusGender.Focus();
-                     check = false;
-                     MessageBox.Show("Sorry, customer's gender must be {Male | Female} please!!!", "Message", MessageBoxButtons.OK);
-                 }
-                 //else if (!(txtEmail.Text.Contains("@gmail.com")) || (txtEmail.Text.Contains("@fpt.edu.vn")))
-                 //{
-                 //    txtEmail.Focus();
-                 //    check = false;
-                 //    MessageBox.Show("Sorry, customer's email must contain {@gmail.com | @fpt.edu.vn} please!!!", "Message", MessageBoxButtons.OK);
-                 //}
-             }
-             catch (Exception ex)
-             {
-                 check = false;
-             }
-             return check;
-         }*/
-
         private bool CheckCustomerInfo()
         {
             bool check = true;
@@ -301,7 +256,7 @@ namespace GroupAssignment
                         Discount = Math.Round(float.Parse(txtDiscount.Text), 5),
                         SubTotal = (pet.QuantityInStock * pet.ExportPrice * (decimal)(1 - Math.Round(float.Parse(txtDiscount.Text), 5))),
                     };
-                    billDetailRepository.InsertBillDetail(billDetail);
+                    billDetailRepository.InsertBillDetail(billDetail); // HƠI KÌ TRIGGER
 
                 }
 
@@ -316,6 +271,7 @@ namespace GroupAssignment
                 }
                 if (check)
                 {
+                    //CỘNG POINT CHO CUSTOMER
                     MessageBox.Show("Creating bill successfully!\n" +
                         "Thank you for being our loyal customer!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();

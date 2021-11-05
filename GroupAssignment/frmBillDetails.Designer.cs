@@ -146,7 +146,7 @@ namespace GroupAssignment
             // 
             // txtPetID
             // 
-            this.txtPetID.Location = new System.Drawing.Point(104, 148);
+            this.txtPetID.Location = new System.Drawing.Point(113, 151);
             this.txtPetID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPetID.Name = "txtPetID";
             this.txtPetID.Size = new System.Drawing.Size(133, 22);
@@ -168,7 +168,7 @@ namespace GroupAssignment
             // txtPetAge
             // 
             this.txtPetAge.Enabled = false;
-            this.txtPetAge.Location = new System.Drawing.Point(104, 176);
+            this.txtPetAge.Location = new System.Drawing.Point(113, 179);
             this.txtPetAge.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPetAge.Name = "txtPetAge";
             this.txtPetAge.Size = new System.Drawing.Size(133, 22);
@@ -235,7 +235,7 @@ namespace GroupAssignment
             // txtGender
             // 
             this.txtGender.Enabled = false;
-            this.txtGender.Location = new System.Drawing.Point(104, 203);
+            this.txtGender.Location = new System.Drawing.Point(113, 206);
             this.txtGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(133, 22);
