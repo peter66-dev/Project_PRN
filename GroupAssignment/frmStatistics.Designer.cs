@@ -61,10 +61,12 @@ namespace WinformPetStore
             // 
             // dgvStatisticsList
             // 
+            this.dgvStatisticsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvStatisticsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStatisticsList.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvStatisticsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStatisticsList.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvStatisticsList.Enabled = false;
             this.dgvStatisticsList.Location = new System.Drawing.Point(0, 169);
             this.dgvStatisticsList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -91,7 +93,7 @@ namespace WinformPetStore
             this.lbStartDate.AutoSize = true;
             this.lbStartDate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbStartDate.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbStartDate.Location = new System.Drawing.Point(404, 18);
+            this.lbStartDate.Location = new System.Drawing.Point(322, 16);
             this.lbStartDate.Name = "lbStartDate";
             this.lbStartDate.Size = new System.Drawing.Size(91, 22);
             this.lbStartDate.TabIndex = 1023;
@@ -100,7 +102,7 @@ namespace WinformPetStore
             // dtkStart
             // 
             this.dtkStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtkStart.Location = new System.Drawing.Point(500, 17);
+            this.dtkStart.Location = new System.Drawing.Point(418, 15);
             this.dtkStart.Name = "dtkStart";
             this.dtkStart.Size = new System.Drawing.Size(250, 22);
             this.dtkStart.TabIndex = 1024;
@@ -111,7 +113,7 @@ namespace WinformPetStore
             this.lbEndDate.AutoSize = true;
             this.lbEndDate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbEndDate.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbEndDate.Location = new System.Drawing.Point(404, 76);
+            this.lbEndDate.Location = new System.Drawing.Point(322, 74);
             this.lbEndDate.Name = "lbEndDate";
             this.lbEndDate.Size = new System.Drawing.Size(83, 22);
             this.lbEndDate.TabIndex = 1025;
@@ -120,7 +122,7 @@ namespace WinformPetStore
             // dtkEnd
             // 
             this.dtkEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtkEnd.Location = new System.Drawing.Point(500, 75);
+            this.dtkEnd.Location = new System.Drawing.Point(418, 73);
             this.dtkEnd.Name = "dtkEnd";
             this.dtkEnd.Size = new System.Drawing.Size(250, 22);
             this.dtkEnd.TabIndex = 1026;
@@ -131,7 +133,7 @@ namespace WinformPetStore
             this.btnSearch.BackColor = System.Drawing.Color.SandyBrown;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnSearch.Location = new System.Drawing.Point(500, 117);
+            this.btnSearch.Location = new System.Drawing.Point(418, 115);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(115, 46);
@@ -184,7 +186,7 @@ namespace WinformPetStore
             // 
             // btnSort
             // 
-            this.btnSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSort.BackColor = System.Drawing.Color.SandyBrown;
             this.btnSort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSort.ForeColor = System.Drawing.Color.SaddleBrown;

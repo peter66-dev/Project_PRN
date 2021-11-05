@@ -271,7 +271,6 @@ namespace WinformPetStore
                 }
             }
         }
-
         private void dgvCustomerList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try

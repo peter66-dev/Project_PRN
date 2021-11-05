@@ -13,7 +13,7 @@ namespace WinformPetStore
         IPetRepository petRepository = new PetRepository();
         ICategoryRepository categoryRepository = new CategoryRepository();
         BindingSource source = new BindingSource();
-        IEnumerable<PetObject> pets = new List<PetObject>();
+        List<PetObject> pets = new List<PetObject>();
         PetObject currentPet = new PetObject();
 
         public frmPetss()
@@ -155,31 +155,6 @@ namespace WinformPetStore
             }
             return id;
         }
-        //private PetObject GetPet()
-        //{
-        //    PetObject pet = null;
-        //    try
-        //    {
-        //        bool gender = txtGender.Text.Trim().Equals("male", StringComparison.OrdinalIgnoreCase);
-        //        bool status = txtStatus.Text.Trim().Equals("Actived", StringComparison.OrdinalIgnoreCase);
-        //        int category = CategoryPet(txtCategoryID.Text);
-        //        pet = new PetObject(int.Parse(txtPetID.Text),
-        //                            txtPetName.Text,
-        //                            int.Parse(txtAge.Text),
-        //                            gender,
-        //                            txtColor.Text,
-        //                            int.Parse(txtQuantityInStock.Text),
-        //                            category,
-        //                            decimal.Parse(txtImportPrice.Text),
-        //                            decimal.Parse(txtExportPrice.Text),
-        //                            status);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        //MessageBox.Show(e.Message, "Get pet");
-        //    }
-        //    return pet;
-        //}
 
         private void LoadPetList(IEnumerable<PetObject> list)
         {
@@ -250,7 +225,7 @@ namespace WinformPetStore
                 dgvPetList.Columns["ImportPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvPetList.Columns["ExportPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvPetList.Columns["Age"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvPetList.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvPetList.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvPetList.Columns["Quantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 dgvPetList.Columns["PetID"].ReadOnly = true;
@@ -391,6 +366,7 @@ namespace WinformPetStore
                 int cateID = CategoryPet(catename);
                 if (cateID >= 1 && cateID <= 5)
                 {
+                    txtSearch.Text = "";
                     var pets = petRepository.GetPetList();
                     var list = new List<PetObject>();
                     foreach (var pet in pets)
@@ -406,10 +382,35 @@ namespace WinformPetStore
                 {
                     MessageBox.Show("Sorry, we just have Dog, Cat, Rabbit, Hamster, Hedgehog!", "Category message", MessageBoxButtons.OK);
                 }
-
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearch.Text.Trim().Length != 0)
+            {
+                try
+                {
+                    pets = petRepository.GetPetByPetName(txtSearch.Text.Trim());
+                    if (pets.Count != 0)
+                    {
+                        LoadPetList(pets);
+                    }
+                    //else
+                    //{
+                    //    MessageBox.Show("Sorry, we can't find this pet!",
+                    //    "Search message", MessageBoxButtons.OK);
+                    //    LoadPetList(pets);
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message,
+                        "txtSearch_TextChanged", MessageBoxButtons.OK);
+                }
             }
         }
     }

@@ -123,6 +123,47 @@ namespace DataAccess
             return pet;
         }
 
+        public List<PetObject> GetPetByPetName(string name)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            List<PetObject> list = new List<PetObject>();
+            command = new SqlCommand("select PetID, PetName, Age, Gender, Color, QuantityInStock, " +
+                "CategoryID, ImportPrice, ExportPrice, Status from tblPets where PetName LIKE @PetName", connection);
+            command.Parameters.AddWithValue("@PetName", "%" + name + "%");
+            try
+            {
+                connection.Open();
+                SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (rs.HasRows)
+                {
+                    while (rs.Read())
+                    {
+                        PetObject pet = new PetObject();
+                        pet.PetID = rs.GetInt32("PetID");
+                        pet.PetName = rs.GetString("PetName");
+                        pet.Age = rs.GetInt32("Age");
+                        pet.Gender = rs.GetBoolean("Gender");
+                        pet.QuantityInStock = rs.GetInt32("QuantityInStock");
+                        pet.Color = rs.GetString("Color");
+                        pet.CategoryID = rs.GetInt32("CategoryID");
+                        pet.ImportPrice = rs.GetDecimal("ImportPrice");
+                        pet.ExportPrice = rs.GetDecimal("ExportPrice");
+                        pet.Status = rs.GetBoolean("Status");
+                        list.Add(pet);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
+
         public void InsertPet(PetObject pet)
         {
             connection = new SqlConnection(GetConnectionString());

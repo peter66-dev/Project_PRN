@@ -20,5 +20,7 @@ namespace DataAccess.Repository
         public void SubQuantityProduct(List<PetObject> cart) => PetDAO.Instance.SubQuantityProduct(cart);
 
         public void UpdatePet(PetObject pet) => PetDAO.Instance.UpdatePet(pet);
+
+        public List<PetObject> GetPetByPetName(string name) => PetDAO.Instance.GetPetByPetName(name);
     }
 }

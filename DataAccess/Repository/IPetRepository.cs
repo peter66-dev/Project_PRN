@@ -13,5 +13,6 @@ namespace DataAccess.Repository
         public List<string> CheckQuantity(List<PetObject> cart);
         public void SubQuantityProduct(List<PetObject> cart);
         public void SetStatusPet();
+        public List<PetObject> GetPetByPetName(string name);
     }
 }

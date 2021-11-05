@@ -234,46 +234,6 @@ namespace DataAccess
             }
         }
 
-        public void UpdateBill(int id, decimal total)
-        {
-            connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("update tblBills set Total = @Total where BillID = @BillID", connection);
-            command.Parameters.AddWithValue("@Total", total);
-            command.Parameters.AddWithValue("@BillID", id);
-            try
-            {
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        public void RemoveBill(int id)
-        {
-            connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("update tblBills set Status = 0 where BillID = @BillID", connection);
-            command.Parameters.AddWithValue("@BillID", id);
-            try
-            {
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
         public List<BillObject> GetBillListByDate(DateTime start, DateTime end)
         {
             connection = new SqlConnection(GetConnectionString());
