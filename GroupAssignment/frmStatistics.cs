@@ -1,5 +1,6 @@
 ﻿using Business_Object;
 using DataAccess.Repository;
+using GroupAssignment;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,7 +16,14 @@ namespace WinformPetStore
 
         public frmStatistics()
         {
-            InitializeComponent();
+            if (Program.isLogin)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                Application.Restart();
+            }
         }
 
         void LoadListView(List<BillObject> list)

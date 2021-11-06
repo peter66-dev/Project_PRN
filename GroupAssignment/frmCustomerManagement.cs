@@ -4,6 +4,7 @@ using DataAccess.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using GroupAssignment;
 
 namespace WinformPetStore
 {
@@ -15,11 +16,18 @@ namespace WinformPetStore
         bool asc = true;
         public frmCustomerManagement()
         {
-            InitializeComponent();
-            btnLoad.Focus();
-            btnDelete.Enabled = false;
-            btnUpdate.Enabled = false;
-            btnSort.Enabled = false;
+            if (Program.isLogin)
+            {
+                InitializeComponent();
+                btnLoad.Focus();
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnSort.Enabled = false;
+            }
+            else
+            {
+                Application.Restart();
+            }
         }
 
         private void frmCustomerManagement_Load(object sender, EventArgs e)

@@ -261,7 +261,7 @@ namespace DataAccess
         public bool CheckCustomerByEmailAndPhone(string email, string phone) // check exist when create a new customer
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select AccumulatedPoint From tblCustomers where Email = @Email and Phone = @Phone", connection);
+            command = new SqlCommand("select AccumulatedPoint From tblCustomers where Email = @Email or Phone = @Phone", connection);
             command.Parameters.AddWithValue("@Email", email);
             command.Parameters.AddWithValue("@Phone", phone);
             bool check = false;

@@ -12,11 +12,12 @@ namespace GroupAssignment
     static class Program
     {
         public static IConfiguration Configuration;
+        public static bool isLogin = false;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json",
             optional: true, reloadOnChange: true);
@@ -29,8 +30,8 @@ namespace GroupAssignment
 
             frmLogin frm = new frmLogin();
             Application.Run(frm);
-
-            if (frm.isLogin)
+            isLogin = frm.isLogin;
+            if (isLogin)
             {
                 frmMain frmMain = new frmMain();
                 Application.Run(frmMain);

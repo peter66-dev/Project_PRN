@@ -1,5 +1,6 @@
 ﻿using Business_Object;
 using DataAccess.Repository;
+using GroupAssignment;
 using System;
 using System.Data;
 using System.Linq;
@@ -15,7 +16,14 @@ namespace WinformPetStore
 
         public frmCustomerDetails()
         {
-            InitializeComponent();
+            if (Program.isLogin)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                Application.Restart();
+            }
         }
         private void frmCustomerDetails_Load(object sender, EventArgs e)
         {
@@ -110,7 +118,7 @@ namespace WinformPetStore
                     {
                         if (customerRepository.CheckCustomerByIDandEmailAndPhone(int.Parse(txtCusID.Text), email, phone)) // existed in system!
                         {
-                            MessageBox.Show("Sorry, this email and phone has existed in system!\n" +
+                            MessageBox.Show("Sorry, this email or phone number has existed in system!\n" +
                                 "Please update another email or phone number!", "Message", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                             txtEmail.Focus();
                         }

@@ -17,7 +17,14 @@ namespace GroupAssignment
         int check = 0;
         public frmBillDetails()
         {
-            InitializeComponent();
+            if (Program.isLogin)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                Application.Restart();
+            }
         }
 
         private void frmBillDetails_Load(object sender, EventArgs e)
@@ -240,24 +247,31 @@ namespace GroupAssignment
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (CheckCustomerInfo())
+            try
             {
-                BlockCustomerInfo();
-                if (txtQuantityBuy.Value > int.Parse(txtQuantityInStock.Text))
+                if (CheckCustomerInfo())
                 {
-                    MessageBox.Show("Sorry, this pet's quantity don't have enough for you!", "Information", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    bool gender = cboCusGender.Text.Equals("Male") ? true : false;
+                    BlockCustomerInfo();
+                    if (txtQuantityBuy.Value > int.Parse(txtQuantityInStock.Text))
+                    {
+                        MessageBox.Show("Sorry, this pet's quantity don't have enough for you!", "Information", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        bool gender = cboCusGender.Text.Equals("Male") ? true : false;
 
-                    PetObject pet = new PetObject(int.Parse(txtPetID.Text), txtPetName.Text.Trim(), txtColor.Text, int.Parse(txtPetAge.Text),
-                        decimal.Parse(txtUnitPrice.Text), gender, Decimal.ToInt32(txtQuantityBuy.Value));
-                    AddToCart(pet);
-                    LoadPetList();
-                    txtSubTotal.Text = SubTotal().ToString();
-                    btnCheck.Enabled = true;
+                        PetObject pet = new PetObject(int.Parse(txtPetID.Text), txtPetName.Text.Trim(), txtColor.Text, int.Parse(txtPetAge.Text),
+                            decimal.Parse(txtUnitPrice.Text), gender, Decimal.ToInt32(txtQuantityBuy.Value));
+                        AddToCart(pet);
+                        LoadPetList();
+                        txtSubTotal.Text = SubTotal().ToString();
+                        btnCheck.Enabled = true;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -435,6 +449,35 @@ namespace GroupAssignment
             {
                 ClearCustomerInfo();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtEmail.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            txtColor.Text = string.Empty;
+            txtCusName.Text = string.Empty;
+            txtDiscount.Text = string.Empty;
+            txtFreight.Text = string.Empty;
+            txtGender.Text = string.Empty;
+            txtGrandTotal.Text = string.Empty;
+            txtPaidAmount.Text = string.Empty;
+            txtPetAge.Text = string.Empty;
+            txtPetID.Text = string.Empty;
+            txtPetName.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtPoint.Text = string.Empty;
+            txtQuantityBuy.Text = string.Empty;
+            txtQuantityInStock.Text = string.Empty;
+            txtReturnAmount.Text = string.Empty;
+            txtSubTotal.Text = string.Empty;
+            txtUnitPrice.Text = string.Empty;
+            dgvCart.Rows.Clear();
+            dgvCart.Refresh();
+            txtEmail.Enabled = true;
+            txtPhone.Enabled = true;
+            txtAddress.Enabled = true;
+            cboCusGender.Enabled = true;
         }
     }
 }

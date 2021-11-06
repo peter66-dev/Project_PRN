@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataAccess;
+using GroupAssignment;
 
 namespace WinformPetStore
 {
@@ -18,7 +19,14 @@ namespace WinformPetStore
 
         public frmPetss()
         {
-            InitializeComponent();
+            if (Program.isLogin)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                Application.Restart();
+            }
         }
 
         private void frmPets_Load(object sender, EventArgs e)
@@ -353,26 +361,33 @@ namespace WinformPetStore
         {
             try
             {
-                int categoryID = int.Parse(cbCategory.SelectedValue.ToString());
-                string catename = cbCategory.Text.Trim();
-                int cateID = CategoryPet(catename);
-                if (cateID >= 1 && cateID <= 5)
+                if(cbCategory.SelectedValue.ToString() != null)
                 {
-                    txtSearch.Text = "";
-                    var pets = petRepository.GetPetList();
-                    var list = new List<PetObject>();
-                    foreach (var pet in pets)
+                    int categoryID = int.Parse(cbCategory.SelectedValue.ToString());
+                    string catename = cbCategory.Text.Trim();
+                    int cateID = CategoryPet(catename);
+                    if (cateID >= 1 && cateID <= 5)
                     {
-                        if (pet.CategoryID == categoryID)
+                        txtSearch.Text = "";
+                        var pets = petRepository.GetPetList();
+                        var list = new List<PetObject>();
+                        foreach (var pet in pets)
                         {
-                            list.Add(pet);
+                            if (pet.CategoryID == categoryID)
+                            {
+                                list.Add(pet);
+                            }
                         }
+                        LoadPetList(list);
                     }
-                    LoadPetList(list);
+                    else
+                    {
+                        MessageBox.Show("Sorry, we just have Dog, Cat, Rabbit, Hamster, Hedgehog!", "Category message", MessageBoxButtons.OK);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, we just have Dog, Cat, Rabbit, Hamster, Hedgehog!", "Category message", MessageBoxButtons.OK);
+                    throw new Exception("Exception happend");
                 }
             }
             catch (Exception ex)
@@ -404,6 +419,11 @@ namespace WinformPetStore
                         "txtSearch_TextChanged", MessageBoxButtons.OK);
                 }
             }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            LoadPetList(pets);
         }
     }
 }
