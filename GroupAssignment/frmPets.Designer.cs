@@ -67,6 +67,7 @@ namespace WinformPetStore
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lbSearch = new System.Windows.Forms.Label();
+            this.btnLoad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPetList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -479,12 +480,28 @@ namespace WinformPetStore
             this.lbSearch.TabIndex = 1024;
             this.lbSearch.Text = "Search";
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoad.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoad.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnLoad.Location = new System.Drawing.Point(840, 454);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(113, 45);
+            this.btnLoad.TabIndex = 1031;
+            this.btnLoad.Text = "LOAD";
+            this.btnLoad.UseVisualStyleBackColor = false;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // frmPetss
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(55)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(959, 561);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.lbPetID);
@@ -565,5 +582,6 @@ namespace WinformPetStore
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lbSearch;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

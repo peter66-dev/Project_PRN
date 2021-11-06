@@ -182,11 +182,12 @@ namespace GroupAssignment
             else
                 FormBorderStyle = FormBorderStyle.Sizable;
         }
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+
+        private void iconButton1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to quit?", "Message", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Are you sure to log out?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                e.Cancel = true;
+                Application.Restart();
             }
         }
     }

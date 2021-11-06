@@ -82,6 +82,7 @@ namespace GroupAssignment
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.lbCusName = new System.Windows.Forms.Label();
             this.txtCusName = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantityBuy)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +102,7 @@ namespace GroupAssignment
             this.QuantityBuy,
             this.Price});
             this.dgvCart.Enabled = false;
-            this.dgvCart.Location = new System.Drawing.Point(12, 243);
+            this.dgvCart.Location = new System.Drawing.Point(12, 261);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowTemplate.Height = 25;
@@ -138,7 +139,7 @@ namespace GroupAssignment
             this.lbPetInfo.AutoSize = true;
             this.lbPetInfo.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPetInfo.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPetInfo.Location = new System.Drawing.Point(12, 111);
+            this.lbPetInfo.Location = new System.Drawing.Point(12, 135);
             this.lbPetInfo.Name = "lbPetInfo";
             this.lbPetInfo.Size = new System.Drawing.Size(137, 22);
             this.lbPetInfo.TabIndex = 100;
@@ -146,7 +147,7 @@ namespace GroupAssignment
             // 
             // txtPetID
             // 
-            this.txtPetID.Location = new System.Drawing.Point(113, 151);
+            this.txtPetID.Location = new System.Drawing.Point(113, 175);
             this.txtPetID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPetID.Name = "txtPetID";
             this.txtPetID.Size = new System.Drawing.Size(133, 22);
@@ -159,7 +160,7 @@ namespace GroupAssignment
             this.lbPetID.AutoSize = true;
             this.lbPetID.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPetID.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPetID.Location = new System.Drawing.Point(12, 151);
+            this.lbPetID.Location = new System.Drawing.Point(12, 175);
             this.lbPetID.Name = "lbPetID";
             this.lbPetID.Size = new System.Drawing.Size(41, 15);
             this.lbPetID.TabIndex = 333;
@@ -168,7 +169,7 @@ namespace GroupAssignment
             // txtPetAge
             // 
             this.txtPetAge.Enabled = false;
-            this.txtPetAge.Location = new System.Drawing.Point(113, 179);
+            this.txtPetAge.Location = new System.Drawing.Point(113, 203);
             this.txtPetAge.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPetAge.Name = "txtPetAge";
             this.txtPetAge.Size = new System.Drawing.Size(133, 22);
@@ -180,7 +181,7 @@ namespace GroupAssignment
             this.lbAge.AutoSize = true;
             this.lbAge.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbAge.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbAge.Location = new System.Drawing.Point(12, 180);
+            this.lbAge.Location = new System.Drawing.Point(12, 204);
             this.lbAge.Name = "lbAge";
             this.lbAge.Size = new System.Drawing.Size(29, 15);
             this.lbAge.TabIndex = 333;
@@ -190,7 +191,7 @@ namespace GroupAssignment
             // 
             this.txtPetName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPetName.Enabled = false;
-            this.txtPetName.Location = new System.Drawing.Point(449, 148);
+            this.txtPetName.Location = new System.Drawing.Point(407, 172);
             this.txtPetName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPetName.Name = "txtPetName";
             this.txtPetName.Size = new System.Drawing.Size(143, 22);
@@ -203,7 +204,7 @@ namespace GroupAssignment
             this.lbPetName.AutoSize = true;
             this.lbPetName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPetName.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPetName.Location = new System.Drawing.Point(329, 151);
+            this.lbPetName.Location = new System.Drawing.Point(287, 175);
             this.lbPetName.Name = "lbPetName";
             this.lbPetName.Size = new System.Drawing.Size(57, 15);
             this.lbPetName.TabIndex = 333;
@@ -213,7 +214,7 @@ namespace GroupAssignment
             // 
             this.txtUnitPrice.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtUnitPrice.Enabled = false;
-            this.txtUnitPrice.Location = new System.Drawing.Point(449, 176);
+            this.txtUnitPrice.Location = new System.Drawing.Point(407, 200);
             this.txtUnitPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(143, 22);
@@ -226,7 +227,7 @@ namespace GroupAssignment
             this.lbUnitPrice.AutoSize = true;
             this.lbUnitPrice.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbUnitPrice.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbUnitPrice.Location = new System.Drawing.Point(329, 180);
+            this.lbUnitPrice.Location = new System.Drawing.Point(287, 204);
             this.lbUnitPrice.Name = "lbUnitPrice";
             this.lbUnitPrice.Size = new System.Drawing.Size(61, 15);
             this.lbUnitPrice.TabIndex = 333;
@@ -235,7 +236,7 @@ namespace GroupAssignment
             // txtGender
             // 
             this.txtGender.Enabled = false;
-            this.txtGender.Location = new System.Drawing.Point(113, 206);
+            this.txtGender.Location = new System.Drawing.Point(113, 230);
             this.txtGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(133, 22);
@@ -247,7 +248,7 @@ namespace GroupAssignment
             this.lbPetGender.AutoSize = true;
             this.lbPetGender.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPetGender.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPetGender.Location = new System.Drawing.Point(12, 207);
+            this.lbPetGender.Location = new System.Drawing.Point(12, 231);
             this.lbPetGender.Name = "lbPetGender";
             this.lbPetGender.Size = new System.Drawing.Size(47, 15);
             this.lbPetGender.TabIndex = 333;
@@ -259,7 +260,7 @@ namespace GroupAssignment
             this.lbQuantityBuy.AutoSize = true;
             this.lbQuantityBuy.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbQuantityBuy.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbQuantityBuy.Location = new System.Drawing.Point(633, 184);
+            this.lbQuantityBuy.Location = new System.Drawing.Point(575, 205);
             this.lbQuantityBuy.Name = "lbQuantityBuy";
             this.lbQuantityBuy.Size = new System.Drawing.Size(77, 15);
             this.lbQuantityBuy.TabIndex = 3;
@@ -271,10 +272,10 @@ namespace GroupAssignment
             this.btnAdd.BackColor = System.Drawing.Color.SandyBrown;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnAdd.Location = new System.Drawing.Point(872, 80);
+            this.btnAdd.Location = new System.Drawing.Point(842, 135);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 45);
+            this.btnAdd.Size = new System.Drawing.Size(105, 45);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -286,7 +287,7 @@ namespace GroupAssignment
             this.btnSave.BackColor = System.Drawing.Color.SandyBrown;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnSave.Location = new System.Drawing.Point(754, 486);
+            this.btnSave.Location = new System.Drawing.Point(753, 500);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(139, 46);
@@ -301,7 +302,7 @@ namespace GroupAssignment
             this.lbCalculation.AutoSize = true;
             this.lbCalculation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCalculation.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbCalculation.Location = new System.Drawing.Point(635, 221);
+            this.lbCalculation.Location = new System.Drawing.Point(605, 235);
             this.lbCalculation.Name = "lbCalculation";
             this.lbCalculation.Size = new System.Drawing.Size(162, 22);
             this.lbCalculation.TabIndex = 100;
@@ -311,7 +312,7 @@ namespace GroupAssignment
             // 
             this.txtSubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubTotal.Enabled = false;
-            this.txtSubTotal.Location = new System.Drawing.Point(754, 258);
+            this.txtSubTotal.Location = new System.Drawing.Point(753, 272);
             this.txtSubTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(153, 22);
@@ -324,7 +325,7 @@ namespace GroupAssignment
             this.lbSubTotal.AutoSize = true;
             this.lbSubTotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbSubTotal.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbSubTotal.Location = new System.Drawing.Point(635, 261);
+            this.lbSubTotal.Location = new System.Drawing.Point(634, 275);
             this.lbSubTotal.Name = "lbSubTotal";
             this.lbSubTotal.Size = new System.Drawing.Size(55, 15);
             this.lbSubTotal.TabIndex = 333;
@@ -333,7 +334,7 @@ namespace GroupAssignment
             // txtDiscount
             // 
             this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiscount.Location = new System.Drawing.Point(754, 295);
+            this.txtDiscount.Location = new System.Drawing.Point(753, 309);
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(153, 22);
@@ -346,7 +347,7 @@ namespace GroupAssignment
             this.lbDiscount.AutoSize = true;
             this.lbDiscount.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbDiscount.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbDiscount.Location = new System.Drawing.Point(635, 296);
+            this.lbDiscount.Location = new System.Drawing.Point(634, 310);
             this.lbDiscount.Name = "lbDiscount";
             this.lbDiscount.Size = new System.Drawing.Size(56, 15);
             this.lbDiscount.TabIndex = 333;
@@ -356,7 +357,7 @@ namespace GroupAssignment
             // 
             this.txtGrandTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGrandTotal.Enabled = false;
-            this.txtGrandTotal.Location = new System.Drawing.Point(754, 368);
+            this.txtGrandTotal.Location = new System.Drawing.Point(753, 382);
             this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.Size = new System.Drawing.Size(153, 22);
@@ -369,7 +370,7 @@ namespace GroupAssignment
             this.lbGrandTotal.AutoSize = true;
             this.lbGrandTotal.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbGrandTotal.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbGrandTotal.Location = new System.Drawing.Point(635, 369);
+            this.lbGrandTotal.Location = new System.Drawing.Point(634, 383);
             this.lbGrandTotal.Name = "lbGrandTotal";
             this.lbGrandTotal.Size = new System.Drawing.Size(68, 15);
             this.lbGrandTotal.TabIndex = 333;
@@ -378,7 +379,7 @@ namespace GroupAssignment
             // txtPaidAmount
             // 
             this.txtPaidAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPaidAmount.Location = new System.Drawing.Point(754, 408);
+            this.txtPaidAmount.Location = new System.Drawing.Point(753, 422);
             this.txtPaidAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPaidAmount.Name = "txtPaidAmount";
             this.txtPaidAmount.Size = new System.Drawing.Size(153, 22);
@@ -391,7 +392,7 @@ namespace GroupAssignment
             this.lbPaidAmount.AutoSize = true;
             this.lbPaidAmount.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPaidAmount.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPaidAmount.Location = new System.Drawing.Point(635, 410);
+            this.lbPaidAmount.Location = new System.Drawing.Point(634, 424);
             this.lbPaidAmount.Name = "lbPaidAmount";
             this.lbPaidAmount.Size = new System.Drawing.Size(74, 15);
             this.lbPaidAmount.TabIndex = 333;
@@ -401,7 +402,7 @@ namespace GroupAssignment
             // 
             this.txtReturnAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtReturnAmount.Enabled = false;
-            this.txtReturnAmount.Location = new System.Drawing.Point(754, 445);
+            this.txtReturnAmount.Location = new System.Drawing.Point(753, 459);
             this.txtReturnAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtReturnAmount.Name = "txtReturnAmount";
             this.txtReturnAmount.Size = new System.Drawing.Size(153, 22);
@@ -414,7 +415,7 @@ namespace GroupAssignment
             this.lbReturnAmount.AutoSize = true;
             this.lbReturnAmount.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbReturnAmount.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbReturnAmount.Location = new System.Drawing.Point(635, 444);
+            this.lbReturnAmount.Location = new System.Drawing.Point(634, 458);
             this.lbReturnAmount.Name = "lbReturnAmount";
             this.lbReturnAmount.Size = new System.Drawing.Size(89, 15);
             this.lbReturnAmount.TabIndex = 333;
@@ -426,7 +427,7 @@ namespace GroupAssignment
             this.lbQuantityInStock.AutoSize = true;
             this.lbQuantityInStock.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbQuantityInStock.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbQuantityInStock.Location = new System.Drawing.Point(329, 211);
+            this.lbQuantityInStock.Location = new System.Drawing.Point(287, 235);
             this.lbQuantityInStock.Name = "lbQuantityInStock";
             this.lbQuantityInStock.Size = new System.Drawing.Size(102, 15);
             this.lbQuantityInStock.TabIndex = 333;
@@ -435,7 +436,7 @@ namespace GroupAssignment
             // txtQuantityBuy
             // 
             this.txtQuantityBuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantityBuy.Location = new System.Drawing.Point(754, 182);
+            this.txtQuantityBuy.Location = new System.Drawing.Point(696, 203);
             this.txtQuantityBuy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtQuantityBuy.Maximum = new decimal(new int[] {
             10,
@@ -461,7 +462,7 @@ namespace GroupAssignment
             // 
             this.txtQuantityInStock.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtQuantityInStock.Enabled = false;
-            this.txtQuantityInStock.Location = new System.Drawing.Point(449, 203);
+            this.txtQuantityInStock.Location = new System.Drawing.Point(407, 227);
             this.txtQuantityInStock.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtQuantityInStock.Name = "txtQuantityInStock";
             this.txtQuantityInStock.Size = new System.Drawing.Size(143, 22);
@@ -474,7 +475,7 @@ namespace GroupAssignment
             this.lbVND.AutoSize = true;
             this.lbVND.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbVND.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbVND.Location = new System.Drawing.Point(803, 223);
+            this.lbVND.Location = new System.Drawing.Point(773, 237);
             this.lbVND.Name = "lbVND";
             this.lbVND.Size = new System.Drawing.Size(56, 19);
             this.lbVND.TabIndex = 933;
@@ -486,7 +487,7 @@ namespace GroupAssignment
             this.btnCheck.BackColor = System.Drawing.Color.SandyBrown;
             this.btnCheck.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheck.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnCheck.Location = new System.Drawing.Point(635, 486);
+            this.btnCheck.Location = new System.Drawing.Point(634, 500);
             this.btnCheck.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(88, 46);
@@ -498,7 +499,7 @@ namespace GroupAssignment
             // txtFreight
             // 
             this.txtFreight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFreight.Location = new System.Drawing.Point(754, 330);
+            this.txtFreight.Location = new System.Drawing.Point(753, 344);
             this.txtFreight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtFreight.Name = "txtFreight";
             this.txtFreight.Size = new System.Drawing.Size(153, 22);
@@ -511,7 +512,7 @@ namespace GroupAssignment
             this.lbFreight.AutoSize = true;
             this.lbFreight.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbFreight.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbFreight.Location = new System.Drawing.Point(635, 332);
+            this.lbFreight.Location = new System.Drawing.Point(634, 346);
             this.lbFreight.Name = "lbFreight";
             this.lbFreight.Size = new System.Drawing.Size(48, 15);
             this.lbFreight.TabIndex = 333;
@@ -525,10 +526,10 @@ namespace GroupAssignment
             this.cboCusGender.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cboCusGender.Location = new System.Drawing.Point(754, 73);
+            this.cboCusGender.Location = new System.Drawing.Point(753, 85);
             this.cboCusGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboCusGender.Name = "cboCusGender";
-            this.cboCusGender.Size = new System.Drawing.Size(83, 23);
+            this.cboCusGender.Size = new System.Drawing.Size(120, 23);
             this.cboCusGender.TabIndex = 4444;
             // 
             // lbAddress
@@ -537,7 +538,7 @@ namespace GroupAssignment
             this.lbAddress.AutoSize = true;
             this.lbAddress.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbAddress.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbAddress.Location = new System.Drawing.Point(329, 72);
+            this.lbAddress.Location = new System.Drawing.Point(329, 85);
             this.lbAddress.Name = "lbAddress";
             this.lbAddress.Size = new System.Drawing.Size(52, 15);
             this.lbAddress.TabIndex = 333;
@@ -549,7 +550,7 @@ namespace GroupAssignment
             this.lbCusGender.AutoSize = true;
             this.lbCusGender.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCusGender.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbCusGender.Location = new System.Drawing.Point(636, 75);
+            this.lbCusGender.Location = new System.Drawing.Point(636, 88);
             this.lbCusGender.Name = "lbCusGender";
             this.lbCusGender.Size = new System.Drawing.Size(47, 15);
             this.lbCusGender.TabIndex = 1000;
@@ -560,7 +561,7 @@ namespace GroupAssignment
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbEmail.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbEmail.Location = new System.Drawing.Point(12, 45);
+            this.lbEmail.Location = new System.Drawing.Point(12, 58);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(38, 15);
             this.lbEmail.TabIndex = 1000;
@@ -572,7 +573,7 @@ namespace GroupAssignment
             this.lbPhone.AutoSize = true;
             this.lbPhone.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPhone.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPhone.Location = new System.Drawing.Point(329, 45);
+            this.lbPhone.Location = new System.Drawing.Point(329, 58);
             this.lbPhone.Name = "lbPhone";
             this.lbPhone.Size = new System.Drawing.Size(41, 15);
             this.lbPhone.TabIndex = 333;
@@ -580,7 +581,7 @@ namespace GroupAssignment
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(113, 38);
+            this.txtEmail.Location = new System.Drawing.Point(113, 51);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(181, 22);
@@ -591,10 +592,10 @@ namespace GroupAssignment
             // 
             this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtPhone.Enabled = false;
-            this.txtPhone.Location = new System.Drawing.Point(449, 41);
+            this.txtPhone.Location = new System.Drawing.Point(407, 54);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(143, 22);
+            this.txtPhone.Size = new System.Drawing.Size(185, 22);
             this.txtPhone.TabIndex = 3333;
             // 
             // lbCusInfo
@@ -612,18 +613,18 @@ namespace GroupAssignment
             // 
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddress.Enabled = false;
-            this.txtAddress.Location = new System.Drawing.Point(449, 72);
+            this.txtAddress.Location = new System.Drawing.Point(407, 85);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(143, 53);
+            this.txtAddress.Size = new System.Drawing.Size(185, 53);
             this.txtAddress.TabIndex = 42333;
             // 
             // txtColor
             // 
             this.txtColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtColor.Enabled = false;
-            this.txtColor.Location = new System.Drawing.Point(754, 151);
+            this.txtColor.Location = new System.Drawing.Point(696, 172);
             this.txtColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(120, 22);
@@ -636,7 +637,7 @@ namespace GroupAssignment
             this.lbColor.AutoSize = true;
             this.lbColor.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbColor.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbColor.Location = new System.Drawing.Point(635, 154);
+            this.lbColor.Location = new System.Drawing.Point(577, 175);
             this.lbColor.Name = "lbColor";
             this.lbColor.Size = new System.Drawing.Size(38, 15);
             this.lbColor.TabIndex = 333;
@@ -648,7 +649,7 @@ namespace GroupAssignment
             this.lbPoint.AutoSize = true;
             this.lbPoint.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPoint.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbPoint.Location = new System.Drawing.Point(634, 45);
+            this.lbPoint.Location = new System.Drawing.Point(634, 58);
             this.lbPoint.Name = "lbPoint";
             this.lbPoint.Size = new System.Drawing.Size(36, 15);
             this.lbPoint.TabIndex = 333;
@@ -658,10 +659,10 @@ namespace GroupAssignment
             // 
             this.txtPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPoint.Enabled = false;
-            this.txtPoint.Location = new System.Drawing.Point(754, 41);
+            this.txtPoint.Location = new System.Drawing.Point(753, 54);
             this.txtPoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPoint.Name = "txtPoint";
-            this.txtPoint.Size = new System.Drawing.Size(83, 22);
+            this.txtPoint.Size = new System.Drawing.Size(120, 22);
             this.txtPoint.TabIndex = 2333;
             this.txtPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -670,7 +671,7 @@ namespace GroupAssignment
             this.lbCusName.AutoSize = true;
             this.lbCusName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCusName.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbCusName.Location = new System.Drawing.Point(12, 76);
+            this.lbCusName.Location = new System.Drawing.Point(12, 89);
             this.lbCusName.Name = "lbCusName";
             this.lbCusName.Size = new System.Drawing.Size(93, 15);
             this.lbCusName.TabIndex = 1000;
@@ -679,11 +680,26 @@ namespace GroupAssignment
             // txtCusName
             // 
             this.txtCusName.Enabled = false;
-            this.txtCusName.Location = new System.Drawing.Point(113, 69);
+            this.txtCusName.Location = new System.Drawing.Point(113, 82);
             this.txtCusName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCusName.Name = "txtCusName";
             this.txtCusName.Size = new System.Drawing.Size(181, 22);
             this.txtCusName.TabIndex = 1333;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.SandyBrown;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnCancel.Location = new System.Drawing.Point(842, 189);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(105, 45);
+            this.btnCancel.TabIndex = 42334;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmBillDetails
             // 
@@ -691,6 +707,7 @@ namespace GroupAssignment
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(55)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(959, 561);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lbCusInfo);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtPoint);
@@ -809,5 +826,6 @@ namespace GroupAssignment
         private System.Windows.Forms.TextBox txtPoint;
         private System.Windows.Forms.Label lbCusName;
         private System.Windows.Forms.TextBox txtCusName;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Business_Object;
 using DataAccess.Repository;
+using GroupAssignment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,14 @@ namespace WinformPetStore
 
         public frmPetDetails()
         {
-            InitializeComponent();
+            if (Program.isLogin)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                Application.Restart();
+            }
         }
 
         string CategoryPet(int id)
@@ -165,7 +173,7 @@ namespace WinformPetStore
                    cboCate.Text.Trim().Equals("rabbit") ||
                    cboCate.Text.Trim().Equals("hamster") ||
                    cboCate.Text.Trim().Equals("dog") ||
-                   cboCate.Text.Trim().Equals("Hedgehog"))
+                   cboCate.Text.Trim().Equals("hedgehog"))
                 {
                     cboCate.Focus();
                     MessageBox.Show($"Sorry, we don't have Category name: {cboCate.Text}!",
@@ -209,7 +217,7 @@ namespace WinformPetStore
                 else if (int.Parse(txtExport.Text) < 100000)
                 {
                     txtExport.Focus();
-                    MessageBox.Show("Sorry, import price is so cheap!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Sorry, export price is so cheap!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     check = false;
                 }
                 else if (int.Parse(txtImport.Text) > int.Parse(txtExport.Text))
