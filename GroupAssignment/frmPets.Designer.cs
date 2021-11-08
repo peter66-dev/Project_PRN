@@ -366,7 +366,7 @@ namespace WinformPetStore
             this.btnAdd.BackColor = System.Drawing.Color.SandyBrown;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnAdd.Location = new System.Drawing.Point(840, 256);
+            this.btnAdd.Location = new System.Drawing.Point(840, 319);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(113, 45);
@@ -381,7 +381,7 @@ namespace WinformPetStore
             this.btnDelete.BackColor = System.Drawing.Color.SandyBrown;
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnDelete.Location = new System.Drawing.Point(840, 385);
+            this.btnDelete.Location = new System.Drawing.Point(840, 447);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 45);
@@ -417,7 +417,7 @@ namespace WinformPetStore
             this.btnUpdate.BackColor = System.Drawing.Color.SandyBrown;
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnUpdate.Location = new System.Drawing.Point(840, 320);
+            this.btnUpdate.Location = new System.Drawing.Point(840, 383);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(113, 45);
@@ -486,7 +486,7 @@ namespace WinformPetStore
             this.btnLoad.BackColor = System.Drawing.Color.SandyBrown;
             this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoad.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnLoad.Location = new System.Drawing.Point(840, 454);
+            this.btnLoad.Location = new System.Drawing.Point(840, 256);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(113, 45);

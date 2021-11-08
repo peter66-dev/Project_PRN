@@ -67,7 +67,6 @@ namespace GroupAssignment
             this.btnCheck = new System.Windows.Forms.Button();
             this.txtFreight = new System.Windows.Forms.TextBox();
             this.lbFreight = new System.Windows.Forms.Label();
-            this.cboCusGender = new System.Windows.Forms.ComboBox();
             this.lbAddress = new System.Windows.Forms.Label();
             this.lbCusGender = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
@@ -83,6 +82,7 @@ namespace GroupAssignment
             this.lbCusName = new System.Windows.Forms.Label();
             this.txtCusName = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtCusGender = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantityBuy)).BeginInit();
             this.SuspendLayout();
@@ -518,20 +518,6 @@ namespace GroupAssignment
             this.lbFreight.TabIndex = 333;
             this.lbFreight.Text = "Freight";
             // 
-            // cboCusGender
-            // 
-            this.cboCusGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboCusGender.Enabled = false;
-            this.cboCusGender.FormattingEnabled = true;
-            this.cboCusGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cboCusGender.Location = new System.Drawing.Point(753, 85);
-            this.cboCusGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboCusGender.Name = "cboCusGender";
-            this.cboCusGender.Size = new System.Drawing.Size(120, 23);
-            this.cboCusGender.TabIndex = 4444;
-            // 
             // lbAddress
             // 
             this.lbAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -701,6 +687,17 @@ namespace GroupAssignment
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // txtCusGender
+            // 
+            this.txtCusGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCusGender.Enabled = false;
+            this.txtCusGender.Location = new System.Drawing.Point(753, 84);
+            this.txtCusGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCusGender.Name = "txtCusGender";
+            this.txtCusGender.Size = new System.Drawing.Size(120, 22);
+            this.txtCusGender.TabIndex = 2333;
+            this.txtCusGender.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmBillDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -710,6 +707,7 @@ namespace GroupAssignment
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lbCusInfo);
             this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtCusGender);
             this.Controls.Add(this.txtPoint);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.lbVND);
@@ -725,7 +723,6 @@ namespace GroupAssignment
             this.Controls.Add(this.lbAddress);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.cboCusGender);
             this.Controls.Add(this.lbAge);
             this.Controls.Add(this.lbReturnAmount);
             this.Controls.Add(this.lbFreight);
@@ -806,7 +803,6 @@ namespace GroupAssignment
         private System.Windows.Forms.Button btnCheck;
         private System.Windows.Forms.TextBox txtFreight;
         private System.Windows.Forms.Label lbFreight;
-        private System.Windows.Forms.ComboBox cboCusGender;
         private System.Windows.Forms.Label lbAddress;
         private System.Windows.Forms.Label lbCusGender;
         private System.Windows.Forms.Label lbEmail;
@@ -827,5 +823,6 @@ namespace GroupAssignment
         private System.Windows.Forms.Label lbCusName;
         private System.Windows.Forms.TextBox txtCusName;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtCusGender;
     }
 }

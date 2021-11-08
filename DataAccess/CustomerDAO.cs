@@ -47,7 +47,7 @@ namespace DataAccess
             List<CustomerObject> list = new List<CustomerObject>();
             connection = new SqlConnection(GetConnectionString());
             command = new SqlCommand("Select CustomerID, CustomerName, Gender, Email, " +
-                "Phone, Address, AccumulatedPoint From tblCustomers where Status = @Status", connection);
+                "Phone, Address, AccumulatedPoint, Status From tblCustomers", connection);
             command.Parameters.AddWithValue("@Status", 1);
             try
             {
@@ -66,7 +66,7 @@ namespace DataAccess
                             Address = rs.GetString("Address"),
                             Gender = rs.GetBoolean("Gender"),
                             AccumulatedPoint = rs.GetInt32("AccumulatedPoint"),
-                            Status = true
+                            Status = rs.GetBoolean("Status")
                         };
                         list.Add(cus);
                     }
@@ -220,6 +220,27 @@ namespace DataAccess
             }
         }
 
+        public void AddPointCustomer(int id)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("Update tblCustomers set AccumulatedPoint = AccumulatedPoint + 1 where CustomerID = @CustomerID", connection);
+            command.Parameters.AddWithValue("@CustomerID", id);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         public CustomerObject GetCustomerByID(int id)
         {
             connection = new SqlConnection(GetConnectionString());
@@ -261,7 +282,7 @@ namespace DataAccess
         public bool CheckCustomerByEmailAndPhone(string email, string phone) // check exist when create a new customer
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select AccumulatedPoint From tblCustomers where Email = @Email or Phone = @Phone", connection);
+            command = new SqlCommand("select AccumulatedPoint From tblCustomers where Email = @Email and Phone = @Phone", connection);
             command.Parameters.AddWithValue("@Email", email);
             command.Parameters.AddWithValue("@Phone", phone);
             bool check = false;
@@ -404,7 +425,7 @@ namespace DataAccess
             command = new SqlCommand("select CustomerID, CustomerName, Gender, Email, " +
                 "Phone, Address, AccumulatedPoint From tblCustomers " +
                 "where Phone = @Phone and Status = 1", connection);
-            command.Parameters.AddWithValue("@Phone", phone );
+            command.Parameters.AddWithValue("@Phone", phone);
             CustomerObject cus = new CustomerObject();
 
             try
@@ -477,9 +498,10 @@ namespace DataAccess
 
         public void DeleteCustomer(int id)
         {
-            connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("update tblCustomers set status = 0 where customerid = @customerid", connection);
-            command.Parameters.AddWithValue("@customerid", id);
+            connection = new SqlConnection(GetConnectionString()); // false || 0
+            command = new SqlCommand("update tblCustomers set Status = @Status where CustomerID = @CustomerID", connection);
+            command.Parameters.AddWithValue("@CustomerID", id);
+            command.Parameters.AddWithValue("@Status", false);
             try
             {
                 connection.Open();

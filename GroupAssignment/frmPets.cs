@@ -173,7 +173,7 @@ namespace WinformPetStore
                     dgvPetList.Rows.Clear();
                     PetObject pet = list.ElementAt(0);
                     string gender = pet.Gender ? "Male" : " Female";
-                    string status = pet.Status ? "Actived" : "Deactived";
+                    string status = pet.Status ? "Actived" : "Inactived";
                     string category = CategoryPet(pet.CategoryID);
                     dgvPetList.Rows.Add(pet.PetID, category, pet.PetName, pet.Age, gender, pet.Color,
                         pet.QuantityInStock, pet.ImportPrice, pet.ExportPrice, status);
@@ -187,7 +187,7 @@ namespace WinformPetStore
                     {
                         string gender = pet.Gender ? "Male" : " Female";
                         string category = CategoryPet(pet.CategoryID);
-                        string status = pet.Status ? "Actived" : "Deactived";
+                        string status = pet.Status ? "Actived" : "Inactived";
                         dgvPetList.Rows.Add(pet.PetID, category, pet.PetName, pet.Age, gender, pet.Color,
                         pet.QuantityInStock, pet.ImportPrice, pet.ExportPrice, status);
                     }
@@ -308,6 +308,7 @@ namespace WinformPetStore
                 {
                     petRepository.RemovePet(pet.PetID);
                     MessageBox.Show("Removing successfully!", "Message!", MessageBoxButtons.OK);
+                    Reset();
                     LoadPetList(petRepository.GetPetList());
                 }
             }
@@ -423,6 +424,7 @@ namespace WinformPetStore
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            pets = petRepository.GetPetList();
             LoadPetList(pets);
         }
     }

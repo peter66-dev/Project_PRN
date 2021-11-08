@@ -180,7 +180,7 @@ namespace WinformPetStore
                         "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     check = false;
                 }
-                else if (txtAge.Value == 0)
+                else if (txtAge.Value <= 0)
                 {
                     txtAge.Focus();
                     MessageBox.Show("Sorry, Pet Age must be more than 0\n" +
@@ -202,16 +202,16 @@ namespace WinformPetStore
                     check = false;
                 }
 
-                else if (int.Parse(txtImport.Text) < 100000)
+                else if (!(decimal.TryParse(txtImport.Text, out decimal value) && value >= 10000))
                 {
                     txtImport.Focus();
                     MessageBox.Show("Sorry, import price is so cheap!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     check = false;
                 }
-                else if (!(txtQuantity.Value > 0))
+                else if ((txtQuantity.Value < 0))
                 {
                     txtQuantity.Focus();
-                    MessageBox.Show("Sorry, Quantity must be more than 0!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Sorry, Quantity must be >= 0!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     check = false;
                 }
                 else if (int.Parse(txtExport.Text) < 100000)
@@ -245,7 +245,7 @@ namespace WinformPetStore
                     if (InsertOrUpdate) // update
                     {
                         PetObject pet = new PetObject();
-                        pet.PetID = int.Parse(txtPetID.Text);
+                        pet.PetID = PetInfo.PetID;
                         pet.PetName = txtPetName.Text.Trim();
                         pet.Gender = cboGender.Text.Equals("male", StringComparison.OrdinalIgnoreCase) ? true : false;
                         pet.Age = int.Parse(txtAge.Text);

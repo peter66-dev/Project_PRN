@@ -67,7 +67,7 @@ namespace WinformPetStore
                     dgvCustomerList.Rows.Clear();
                     CustomerObject cus = list.ElementAt(0);
                     string gender = cus.Gender ? "Male" : " Female";
-                    string status = cus.Status ? "Actived" : "Deactived";
+                    string status = cus.Status ? "Actived" : "Inactived";
                     dgvCustomerList.Rows.Add(cus.CustomerID, cus.CustomerName, gender, cus.Email, cus.Phone, cus.Address, cus.AccumulatedPoint, status);
                 }
                 else
@@ -79,7 +79,7 @@ namespace WinformPetStore
                     foreach (var cus in list)
                     {
                         string gender = cus.Gender ? "Male" : " Female";
-                        string status = cus.Status ? "Actived" : "Deactived";
+                        string status = cus.Status ? "Actived" : "Inactived";
                         dgvCustomerList.Rows.Add(cus.CustomerID, cus.CustomerName, gender, cus.Email, cus.Phone, cus.Address, cus.AccumulatedPoint, status);
                     }
                 }
@@ -138,8 +138,8 @@ namespace WinformPetStore
                 cus.Email = txtEmail.Text;
                 cus.Phone = txtPhone.Text;
                 cus.Address = txtAddress.Text;
-                cus.Status = txtStatus.Equals("Actived") ? true : false;
-                cus.Gender = cboGender.Text.Equals("male",StringComparison.OrdinalIgnoreCase) ? true : false;
+                cus.Status = txtStatus.Text.Trim().Equals("Actived", StringComparison.OrdinalIgnoreCase);
+                cus.Gender = cboGender.Text.Equals("male", StringComparison.OrdinalIgnoreCase);
                 cus.AccumulatedPoint = int.Parse(txtPoint.Text);
 
             }
@@ -205,11 +205,11 @@ namespace WinformPetStore
                     MessageBox.Show($"Sorry, choose customer you want to update please!", "Update customer message", MessageBoxButtons.OK);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -217,36 +217,37 @@ namespace WinformPetStore
             try
             {
                 var cus = GetCustomerObject();
-                if (MessageBox.Show($"Are you sure to delete member name: {cus.Email}?", "Confirm message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"Are you sure to delete member name: {cus.CustomerName}?", "Confirm message", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    if (cusRepository.GetCustomerForeignKey(cus.CustomerID).CustomerID == 0) // Không bị ảnh hưởng khóa ngoại với bảng Order
+                    // Không bị ảnh hưởng khóa ngoại với bảng Order -> Đổi sang: chỉ set lại status, ko delete nên ko cần check khóa ngoại
+                    //if (cusRepository.GetCustomerForeignKey(cus.CustomerID).CustomerID == 0) 
+                    //{
+                    try
                     {
-                        try
+                        source.Position = 0;
+                        cusRepository.DeleteCustomer(cus.CustomerID);
+                        customers = cusRepository.GetCustomerList();
+                        LoadCustomerList(customers);
+                        if (cusRepository.GetCustomerList().Count() == 1)
                         {
-                            source.Position = 0;
-                            cusRepository.DeleteCustomer(cus.CustomerID);
-                            customers = cusRepository.GetCustomerList();
-                            LoadCustomerList(customers);
-                            if (cusRepository.GetCustomerList().Count() == 1)
-                            {
-                                btnDelete.Enabled = false;
-                                MessageBox.Show("We have only 1 customer existing in list, now. Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Delete a customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            btnDelete.Enabled = false;
+                            MessageBox.Show("We have only 1 customer existing in list, now. Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Can delete this Customer because it's foreign key of Order table in sql server!",
-                                            "Delete a customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        // KHÔNG CHO DELETE VÌ CUSTOMER ĐANG LÀM KHÓA NGOẠI BÊN ORDER
+                        MessageBox.Show(ex.Message, "Delete a customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Can delete this Customer because it's foreign key of Order table in sql server!",
+                    //                        "Delete a customer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    // KHÔNG CHO DELETE VÌ CUSTOMER ĐANG LÀM KHÓA NGOẠI BÊN ORDER
+                    //}
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -300,7 +301,7 @@ namespace WinformPetStore
             {
 
             }
-            
+
         }
     }
 }

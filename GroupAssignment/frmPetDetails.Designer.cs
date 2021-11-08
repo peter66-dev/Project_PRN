@@ -144,7 +144,7 @@ namespace WinformPetStore
             this.txtImport.Mask = "000000000";
             this.txtImport.Name = "txtImport";
             this.txtImport.Size = new System.Drawing.Size(100, 22);
-            this.txtImport.TabIndex = 8;
+            this.txtImport.TabIndex = 7;
             this.txtImport.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAge
@@ -153,16 +153,16 @@ namespace WinformPetStore
             this.txtAge.Location = new System.Drawing.Point(509, 95);
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(120, 22);
-            this.txtAge.TabIndex = 7;
+            this.txtAge.TabIndex = 4;
             this.txtAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtQuantity
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtQuantity.Location = new System.Drawing.Point(162, 286);
+            this.txtQuantity.Location = new System.Drawing.Point(162, 275);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(120, 22);
-            this.txtQuantity.TabIndex = 7;
+            this.txtQuantity.TabIndex = 9;
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cboGender
@@ -175,7 +175,7 @@ namespace WinformPetStore
             this.cboGender.Location = new System.Drawing.Point(162, 152);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(102, 23);
-            this.cboGender.TabIndex = 2;
+            this.cboGender.TabIndex = 5;
             // 
             // cboCate
             // 
@@ -199,6 +199,7 @@ namespace WinformPetStore
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(174, 22);
             this.txtColor.TabIndex = 6;
+            this.txtColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbQuantity
             // 
@@ -206,7 +207,7 @@ namespace WinformPetStore
             this.lbQuantity.AutoSize = true;
             this.lbQuantity.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbQuantity.ForeColor = System.Drawing.Color.SandyBrown;
-            this.lbQuantity.Location = new System.Drawing.Point(12, 285);
+            this.lbQuantity.Location = new System.Drawing.Point(12, 274);
             this.lbQuantity.Name = "lbQuantity";
             this.lbQuantity.Size = new System.Drawing.Size(67, 19);
             this.lbQuantity.TabIndex = 7;
@@ -270,7 +271,7 @@ namespace WinformPetStore
             this.btnCancel.Location = new System.Drawing.Point(386, 367);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(116, 52);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -285,7 +286,7 @@ namespace WinformPetStore
             this.btnSave.Location = new System.Drawing.Point(209, 367);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(116, 52);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 10;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

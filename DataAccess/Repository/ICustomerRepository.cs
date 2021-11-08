@@ -24,5 +24,6 @@ namespace DataAccess.Repository
         public CustomerObject GetACustomerByPhone(string phone);
         public bool CheckCustomerByEmailAndPhone(string email, string phone);
         public bool CheckCustomerByIDandEmailAndPhone(int id, string email, string phone);
+        public void AddPointCustomer(int id);
     }
 }

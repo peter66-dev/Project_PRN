@@ -198,7 +198,7 @@ namespace DataAccess
             connection = new SqlConnection(GetConnectionString());
             command = new SqlCommand("update tblPets set PetName = @PetName, Age = @Age, Gender = @Gender, " +
                 "Color = @Color, QuantityInStock = @QuantityInStock, CategoryID = @CategoryID, ImportPrice = @ImportPrice, " +
-                "ExportPrice = @ExportPrice, Status = @status where PetID = @PetID", connection);
+                "ExportPrice = @ExportPrice, Status = @Status where PetID = @PetID", connection);
             command.Parameters.AddWithValue("@PetName", pet.PetName);
             command.Parameters.AddWithValue("@PetID", pet.PetID);
             command.Parameters.AddWithValue("@Age", pet.Age);
@@ -208,15 +208,12 @@ namespace DataAccess
             command.Parameters.AddWithValue("@CategoryID", pet.CategoryID);
             command.Parameters.AddWithValue("@ImportPrice", pet.ImportPrice);
             command.Parameters.AddWithValue("@ExportPrice", pet.ExportPrice);
-            if (pet.QuantityInStock == 0)
+            bool status = false;
+            if (pet.QuantityInStock > 0)
             {
-                pet.Status = false;
+                status = true;
             }
-            else
-            {
-                pet.Status = true;
-            }
-            command.Parameters.AddWithValue("@status", pet.Status);
+            command.Parameters.AddWithValue("@Status", status);
 
             try
             {
@@ -236,7 +233,7 @@ namespace DataAccess
         public void RemovePet(int id)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("update tblPets set Status = 0 where PetID = @PetID", connection);
+            command = new SqlCommand("update tblPets set Status = 0, QuantityInStock = 0 where PetID = @PetID", connection);
             command.Parameters.AddWithValue("@PetID", id);
             try
             {
@@ -305,7 +302,8 @@ namespace DataAccess
                 connection.Open();
                 foreach (var pet in cart)
                 {
-                    command = new SqlCommand("update tblPets set  QuantityInStock = QuantityInStock - @QuantityBuy where PetID = @PetID", connection);
+                    command = new SqlCommand("update tblPets set QuantityInStock = QuantityInStock - @QuantityBuy " +
+                        "where PetID = @PetID", connection);
                     command.Parameters.AddWithValue("@QuantityBuy", pet.QuantityInStock);
                     command.Parameters.AddWithValue("@PetID", pet.PetID);
                     command.ExecuteNonQuery();

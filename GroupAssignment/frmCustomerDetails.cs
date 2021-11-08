@@ -2,8 +2,6 @@
 using DataAccess.Repository;
 using GroupAssignment;
 using System;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace WinformPetStore
@@ -39,11 +37,15 @@ namespace WinformPetStore
                     cboGender.Text = CustomerInfo.Gender ? "Male" : "Female";
                     txtAddress.Text = CustomerInfo.Address;
                     txtPoint.Text = CustomerInfo.AccumulatedPoint.ToString();
+                    cboStatus.Text = CustomerInfo.Status ? "Actived" : "Inactived";
                 }
-                else
+                else // insert
                 {
                     txtCusID.Text = "xxx";
+                    cboStatus.Text = "Actived";
+                    cboStatus.Enabled = false;
                 }
+                cboGender.Focus();
             }
             catch (Exception ex)
             {
@@ -92,6 +94,14 @@ namespace WinformPetStore
                     MessageBox.Show("Sorry, accumulated point must be more 0 please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     check = false;
                 }
+                else if (!(cboStatus.Text.Equals("actived", StringComparison.OrdinalIgnoreCase) ||
+                    cboStatus.Text.Equals("inactived", StringComparison.OrdinalIgnoreCase)))
+                {
+                    txtPoint.Focus();
+                    MessageBox.Show("Sorry, status must be Actived or Inactived please!",
+                        "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    check = false;
+                }
             }
             catch (Exception ex)
             {
@@ -119,7 +129,7 @@ namespace WinformPetStore
                         if (customerRepository.CheckCustomerByIDandEmailAndPhone(int.Parse(txtCusID.Text), email, phone)) // existed in system!
                         {
                             MessageBox.Show("Sorry, this email or phone number has existed in system!\n" +
-                                "Please update another email or phone number!", "Message", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                "Please update another email or phone number!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             txtEmail.Focus();
                         }
                         else
@@ -132,19 +142,20 @@ namespace WinformPetStore
                             cus.Email = email;
                             cus.Address = txtAddress.Text.Trim();
                             cus.AccumulatedPoint = Decimal.ToInt32(txtPoint.Value);
-                            cus.Status = true;
+                            cus.Status = cboStatus.Text.Trim().Equals("actived", StringComparison.OrdinalIgnoreCase);
                             customerRepository.UpdateCustomer(cus);
                             MessageBox.Show("Updating a customer successfully!\n" +
                                 "Load again to see new list!", "Message", MessageBoxButtons.OK);
                             Close();
                         }
                     }
-                    else
+                    else // insert
                     {
                         if (customerRepository.CheckCustomerByEmailAndPhone(email, phone)) // existed in system!
                         {
                             MessageBox.Show("Sorry, this email and phone has existed in system!\n" +
-                                "Please update status for this customer instead of creating a new account", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                "Please update status for this customer instead of creating a new account",
+                                "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             txtEmail.Focus();
                         }
                         else

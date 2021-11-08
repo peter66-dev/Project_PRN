@@ -210,9 +210,9 @@ namespace WinformPetStore
             this.btnSort.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSort.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSort.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnSort.Location = new System.Drawing.Point(851, 250);
+            this.btnSort.Location = new System.Drawing.Point(851, 248);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(191, 30);
+            this.btnSort.Size = new System.Drawing.Size(191, 35);
             this.btnSort.TabIndex = 5;
             this.btnSort.Text = "SORT BY NAME";
             this.btnSort.UseVisualStyleBackColor = false;

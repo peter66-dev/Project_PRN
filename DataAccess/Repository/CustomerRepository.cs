@@ -28,5 +28,6 @@ namespace DataAccess.Repository
         public void UpdateCustomer(CustomerObject cus) => CustomerDAO.Instance.UpdateCustomer(cus);
         public bool CheckCustomerByEmailAndPhone(string email, string phone) => CustomerDAO.Instance.CheckCustomerByEmailAndPhone(email, phone);
         public bool CheckCustomerByIDandEmailAndPhone(int id, string email, string phone) => CustomerDAO.Instance.CheckCustomerByIDandEmailAndPhone(id, email, phone);
+        public void AddPointCustomer(int id) => CustomerDAO.Instance.AddPointCustomer(id);
     }
 }

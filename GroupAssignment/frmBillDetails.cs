@@ -67,7 +67,8 @@ namespace GroupAssignment
             if (txtPhone.Text.Trim().Length == 0)
             {
                 check = false;
-                MessageBox.Show("Sorry, you must fill in Email information before adding pet please!", "Check form customer message", MessageBoxButtons.OK);
+                MessageBox.Show("Sorry, you must fill in Email information before adding pet please!",
+                    "Check form customer message", MessageBoxButtons.OK);
                 txtEmail.Focus();
             }
             return check;
@@ -77,7 +78,7 @@ namespace GroupAssignment
             txtEmail.Enabled = false;
             txtPhone.Enabled = false;
             txtAddress.Enabled = false;
-            cboCusGender.Enabled = false;
+            txtCusGender.Enabled = false;
             //txtEmail.Enabled = false;
         }
 
@@ -117,7 +118,7 @@ namespace GroupAssignment
                         check = false;
                         txtPaidAmount.Focus();
                         MessageBox.Show($"Paid Amount: {paidAmount} is not enough for this bill value:\n" +
-                            $"{grandTotal} + {freight} = {grandTotal + freight}!",
+                            $"{grandTotal} VND!",
                         "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnSave.Enabled = false;
                     }
@@ -141,11 +142,11 @@ namespace GroupAssignment
                     MessageBox.Show("Sorry, discount must be in [0-1) please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnSave.Enabled = false;
                 }
-                else if (!(decimal.TryParse(txtFreight.Text, out decimal valuee) && (valuee >= 0 && valuee <= 1000000)))
+                else if (!(decimal.TryParse(txtFreight.Text, out decimal valuee) && (valuee >= 0 && valuee <= 2000000)))
                 {
                     txtFreight.Focus();
                     check = false;
-                    MessageBox.Show("Sorry, Freight must be in [0-1000000] VND!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Sorry, Freight must be in [0-2000000] VND!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     btnSave.Enabled = false;
                 }
             }
@@ -177,7 +178,7 @@ namespace GroupAssignment
                     {
                         check = false;
                         txtPaidAmount.Focus();
-                        MessageBox.Show($"Paid Amount: {paidAmount} is not enough for this bill value:\n{grandTotal} + {freight} = {grandTotal + freight}!",
+                        MessageBox.Show($"Paid Amount: {paidAmount} VND is not enough for this bill value:\n{grandTotal} VND!",
                         "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnSave.Enabled = false;
                     }
@@ -207,7 +208,7 @@ namespace GroupAssignment
             txtPhone.Clear();
             txtEmail.Clear();
             txtAddress.Clear();
-            cboCusGender.Text = "";
+            txtCusGender.Text = "";
         }
         private void LoadPetList()
         {
@@ -258,7 +259,7 @@ namespace GroupAssignment
                     }
                     else
                     {
-                        bool gender = cboCusGender.Text.Equals("Male") ? true : false;
+                        bool gender = txtCusGender.Text.Equals("Male") ? true : false;
 
                         PetObject pet = new PetObject(int.Parse(txtPetID.Text), txtPetName.Text.Trim(), txtColor.Text, int.Parse(txtPetAge.Text),
                             decimal.Parse(txtUnitPrice.Text), gender, Decimal.ToInt32(txtQuantityBuy.Value));
@@ -271,45 +272,13 @@ namespace GroupAssignment
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                MessageBox.Show("Sorry, you must full fill customer email and pet id before adding to cart",
+                    "Adding to cart", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            {/*
-            if (CheckFormCalculation())
-            {
-                txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2).ToString();
-                btnAdd.Enabled = false;
-                btnAdd.BackColor = Color.LightGray;
-                double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text) - (double)decimal.Parse(txtFreight.Text);
-                txtReturnAmount.Text = Math.Round(returnAmount, 2).ToString();
-
-
-                //Check quantity in stock!
-                List<string> checkQuantityPet = petRepository.CheckQuantity(cart);
-                if (checkQuantityPet.Count == 0) // Check đủ -> ko add thêm , tiến hành add bill | bill detail -> btnSave_Click
-                {
-                    btnSave.Enabled = true;
-                    btnSave.BackColor = Color.DeepSkyBlue;
-                    MessageBox.Show($"Quantity in stock is enough for this bill\n" +
-                        $"Please check bill carefully before save!", "Message", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    btnSave.Enabled = false;
-                    string msg = "";
-                    foreach (string str in checkQuantityPet)
-                    {
-                        msg += str + " | ";
-                    }
-                    MessageBox.Show($"Sorry, we don't have enough quantity for pets name: {msg}.\n" +
-                        $"Please cancel this bill!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            */
-            }
             if (check == 0)
             {
                 if (CheckFormCalculation0())
@@ -330,17 +299,17 @@ namespace GroupAssignment
                         string msg = "";
                         foreach (string str in checkQuantityPet)
                         {
-                            msg += str + " | ";
+                            msg += "\n" + str + ".";
                         }
-                        MessageBox.Show($"Sorry, we don't have enough quantity for pets name: {msg}.\n" +
-                            $"Please cancel this bill!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Sorry, we don't have enough quantity for pets name:\n{msg}\n" +
+                            $"PLEASE CANCEL THIS BILL!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     ++check;
                 }
             }
             else if (check == 1)
             {
-                if (CheckFormCalculation1())
+                if (CheckFormCalculation0() && CheckFormCalculation1())
                 {
                     txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)) + decimal.Parse(txtFreight.Text), 2).ToString();
                     double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text) - (double)decimal.Parse(txtFreight.Text);
@@ -353,7 +322,7 @@ namespace GroupAssignment
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (CheckFormCalculation())
+            if (CheckFormCalculation0() && CheckFormCalculation1())
             {
                 CustomerObject cus = cusRepository.GetACustomerByPhone(txtPhone.Text.Trim());
 
@@ -362,6 +331,7 @@ namespace GroupAssignment
                 decimal freight = Math.Round(decimal.Parse(txtFreight.Text), 2);
                 double total = Math.Round(double.Parse(txtGrandTotal.Text), 2);
                 billRepository.InsertBill(countingbills, cus.CustomerID, (decimal)total, freight); // freight là phí ship!
+                cusRepository.AddPointCustomer(cus.CustomerID);
                 //add new bill details
                 foreach (var pet in cart)
                 {
@@ -374,7 +344,6 @@ namespace GroupAssignment
                         SubTotal = (pet.QuantityInStock * pet.ExportPrice * (decimal)(1 - Math.Round(float.Parse(txtDiscount.Text), 5))),
                     };
                     billDetailRepository.InsertBillDetail(billDetail); // HƠI KÌ TRIGGER
-
                 }
 
                 bool check = false;
@@ -393,6 +362,10 @@ namespace GroupAssignment
                         "Thank you for being our loyal customer!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
+            }
+            else
+            {
+                btnSave.BackColor = Color.SandyBrown;
             }
         }
 
@@ -438,7 +411,7 @@ namespace GroupAssignment
                     txtPoint.Text = cus.AccumulatedPoint.ToString();
                     txtCusName.Text = cus.CustomerName;
                     txtAddress.Text = cus.Address;
-                    cboCusGender.Text = cus.Gender ? "Male" : "Female";
+                    txtCusGender.Text = cus.Gender ? "Male" : "Female";
                 }
                 else
                 {
@@ -453,31 +426,23 @@ namespace GroupAssignment
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtEmail.Text = string.Empty;
-            txtAddress.Text = string.Empty;
-            txtColor.Text = string.Empty;
-            txtCusName.Text = string.Empty;
             txtDiscount.Text = string.Empty;
             txtFreight.Text = string.Empty;
-            txtGender.Text = string.Empty;
             txtGrandTotal.Text = string.Empty;
             txtPaidAmount.Text = string.Empty;
-            txtPetAge.Text = string.Empty;
-            txtPetID.Text = string.Empty;
-            txtPetName.Text = string.Empty;
-            txtPhone.Text = string.Empty;
-            txtPoint.Text = string.Empty;
-            txtQuantityBuy.Text = string.Empty;
-            txtQuantityInStock.Text = string.Empty;
+            txtQuantityBuy.Value = 1;
             txtReturnAmount.Text = string.Empty;
             txtSubTotal.Text = string.Empty;
-            txtUnitPrice.Text = string.Empty;
             dgvCart.Rows.Clear();
             dgvCart.Refresh();
             txtEmail.Enabled = true;
-            txtPhone.Enabled = true;
-            txtAddress.Enabled = true;
-            cboCusGender.Enabled = true;
+            txtPetID.Focus();
+            btnAdd.Enabled = true;
+            btnAdd.BackColor = Color.SandyBrown;
+            cart.RemoveRange(0, cart.Count);
+            check = 0;
+            btnSave.Enabled = false;
+            btnSave.BackColor = Color.SandyBrown;
         }
     }
 }
